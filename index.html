@@ -535,9 +535,19 @@
     if(e.key==='ArrowLeft'||e.key==='PageUp')go(i-1);
     if(e.key==='Home')go(0); if(e.key==='End')go(slides.length-1);
   });
-  let sx=0;
-  document.addEventListener('touchstart',e=>sx=e.touches[0].clientX,{passive:true});
-  document.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50)go(i+(dx<0?1:-1));},{passive:true});
+  let sx=0,sy=0,st=0;
+  document.addEventListener('touchstart',e=>{sx=e.touches[0].clientX;sy=e.touches[0].clientY;st=Date.now();},{passive:true});
+  document.addEventListener('touchend',e=>{
+    const t=e.changedTouches[0];
+    const dx=t.clientX-sx, dy=t.clientY-sy, dt=Date.now()-st;
+    if(Math.abs(dx)>50 && Math.abs(dx)>Math.abs(dy)){go(i+(dx<0?1:-1));return;}   // swipe still works
+    // tap to advance: quick, no movement, not on a control or link
+    if(dt<350 && Math.abs(dx)<10 && Math.abs(dy)<10){
+      if(e.target.closest('#ctr')||e.target.closest('a'))return;
+      if(t.clientX < window.innerWidth*0.2){go(i-1);}   // left-edge tap goes back
+      else{go(i+1);}
+    }
+  },{passive:true});
   let wl=0;
   document.addEventListener('wheel',e=>{const t=Date.now();if(t-wl<700)return;
     if(Math.abs(e.deltaY)>30||Math.abs(e.deltaX)>30){wl=t;go(i+((e.deltaY+e.deltaX)>0?1:-1));}},{passive:true});
