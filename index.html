@@ -7,22 +7,13 @@
 <link rel="icon" href="assets/logo.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 <style>
   :root{
-    /* Midnight Sun brand palette (from brand guide) */
-    --polar:#FFFDF6;      /* polar white / cream   */
-    --mist:#DDE6ED;       /* mist                  */
-    --pearl:#F9E8D2;      /* pearl                 */
-    --glacial:#BCD3E4;    /* glacial blue          */
-    --lavender:#BFB4DC;   /* lavender air          */
-    --msun:#C9CDE4;       /* midnight sun          */
-    --rose:#D9A9A2;       /* blue hour (dusty rose)*/
-    --indigo:#3D55A8;     /* deep indigo accent    */
-    --navy:#2C3763;       /* type navy             */
+    --polar:#FFFDF6; --mist:#DDE6ED; --pearl:#F9E8D2; --glacial:#BCD3E4;
+    --lavender:#BFB4DC; --msun:#C9CDE4; --rose:#D9A9A2; --indigo:#3D55A8; --navy:#2C3763;
     --serif:'Cormorant Garamond',Georgia,serif;
     --sans:'Inter','Helvetica Neue',Arial,sans-serif;
-    /* gradient explorations from the guide */
     --g1:linear-gradient(160deg,#E4DDF0 0%,#F3D9E2 100%);
     --g2:linear-gradient(160deg,#8FA6DA 0%,#E5C1D8 100%);
     --g3:linear-gradient(160deg,#BFD4E6 0%,#E9E4F2 100%);
@@ -32,31 +23,28 @@
   *{margin:0;padding:0;box-sizing:border-box}
   html,body{height:100%;overflow:hidden;font-family:var(--sans);-webkit-font-smoothing:antialiased;
     background:linear-gradient(170deg,#EEF1F6,#EDE7F0)}
-  /* ————— deck stage: a true 16:9 slide, letterboxed like a presentation ————— */
   #frame{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;padding:3.2vh 2.4vw}
   #stage{position:relative;aspect-ratio:16/9;width:min(94vw,calc(93vh*16/9));
     border-radius:14px;overflow:hidden;box-shadow:0 30px 80px rgba(44,55,99,.28),0 4px 16px rgba(44,55,99,.12);
     background:var(--polar)}
   .slide{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .55s ease;background:var(--polar)}
   .slide.active{opacity:1;visibility:visible}
-  .pad{position:absolute;inset:0;padding:7% 7.5%;display:flex;flex-direction:column;justify-content:center}
-  /* split layout: content + rounded accent image (Gamma-style) */
-  .split{display:grid;grid-template-columns:1.15fr .85fr;gap:5%;align-items:stretch}
+  .pad{position:absolute;inset:0;padding:6.5% 7%;display:flex;flex-direction:column;justify-content:center}
+  .split{display:grid;grid-template-columns:1.15fr .85fr;gap:5%;align-items:stretch;height:100%}
   .split .content{display:flex;flex-direction:column;justify-content:center;min-width:0}
   .accent{border-radius:12px;overflow:hidden;position:relative;min-height:100%}
   .accent img{width:100%;height:100%;object-fit:cover;display:block}
   .accent::after{content:'';position:absolute;inset:0;background:linear-gradient(200deg,rgba(191,180,220,.18),rgba(249,232,210,.10))}
-  /* type */
-  .eyebrow{font-size:clamp(.55rem,1vw,.8rem);font-weight:500;letter-spacing:.32em;text-transform:uppercase;
-    color:var(--rose);margin-bottom:1.4em}
+  .eyebrow{font-size:clamp(.55rem,.95vw,.78rem);font-weight:500;letter-spacing:.32em;text-transform:uppercase;
+    color:var(--rose);margin-bottom:1.3em}
   h1.word{font-family:var(--serif);font-weight:300;letter-spacing:.24em;line-height:1.05;
     font-size:clamp(2rem,6.4vw,5.6rem);text-transform:uppercase;color:#fff;text-indent:.24em}
   h2{font-family:var(--serif);font-weight:400;letter-spacing:.01em;line-height:1.08;
-    font-size:clamp(1.5rem,3.6vw,3.3rem);color:var(--navy);margin-bottom:.7em}
+    font-size:clamp(1.35rem,3.2vw,3rem);color:var(--navy);margin-bottom:.6em}
   h2 em{font-style:italic;color:var(--indigo)}
-  p{font-weight:300;line-height:1.65;font-size:clamp(.8rem,1.35vw,1.15rem);color:#57608A;max-width:56ch}
-  .lead{font-family:var(--serif);font-weight:400;font-size:clamp(1.15rem,2.3vw,2.1rem);line-height:1.35;color:var(--navy);max-width:30ch}
-  .small{font-size:clamp(.62rem,.95vw,.82rem);color:#8A90AE;line-height:1.6}
+  p{font-weight:300;line-height:1.6;font-size:clamp(.74rem,1.25vw,1.08rem);color:#57608A;max-width:58ch}
+  .lead{font-family:var(--serif);font-weight:400;font-size:clamp(1.05rem,2.15vw,1.95rem);line-height:1.34;color:var(--navy);max-width:32ch}
+  .small{font-size:clamp(.6rem,.9vw,.8rem);color:#8A90AE;line-height:1.55}
   /* cover */
   .coverbg{position:absolute;inset:0}
   .coverbg img{width:100%;height:100%;object-fit:cover}
@@ -66,9 +54,10 @@
   .cover-sub{margin-top:1.8em;font-weight:400;letter-spacing:.3em;text-transform:uppercase;
     font-size:clamp(.55rem,1vw,.85rem);line-height:2.1;color:rgba(255,255,255,.95)}
   .cover-tag{margin-top:2em;font-size:clamp(.5rem,.8vw,.68rem);letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.75)}
-  /* stat tiles (Gamma-style cards) */
-  .tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(.6rem,1.4vw,1.3rem);margin-top:.6em}
-  .tile{border-radius:12px;padding:clamp(.8rem,1.8vw,1.6rem);background:var(--g3);border:1px solid rgba(61,85,168,.08)}
+  /* tiles */
+  .tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(.55rem,1.3vw,1.2rem);margin-top:.5em}
+  .tiles.t3{grid-template-columns:repeat(3,1fr)}
+  .tile{border-radius:12px;padding:clamp(.7rem,1.6vw,1.45rem);background:var(--g3);border:1px solid rgba(61,85,168,.08)}
   .tile:nth-child(2){background:var(--g1)}
   .tile:nth-child(3){background:var(--g4)}
   .tile:nth-child(4){background:var(--g2)}
@@ -76,73 +65,89 @@
   .tile:nth-child(6){background:var(--g2)}
   .tile:nth-child(7){background:var(--g3)}
   .tile:nth-child(8){background:var(--g1)}
-  .tile .n{font-family:var(--serif);font-weight:400;font-size:clamp(1.4rem,3.1vw,2.8rem);line-height:1;color:var(--navy)}
-  .tile .l{margin-top:.55em;font-size:clamp(.52rem,.82vw,.72rem);letter-spacing:.16em;text-transform:uppercase;color:#5A6390}
+  .tile .n{font-family:var(--serif);font-weight:400;font-size:clamp(1.3rem,2.9vw,2.6rem);line-height:1;color:var(--navy)}
+  .tile .l{margin-top:.5em;font-size:clamp(.5rem,.78vw,.7rem);letter-spacing:.15em;text-transform:uppercase;color:#5A6390}
+  .tile p{font-size:clamp(.6rem,.95vw,.85rem);margin-top:.6em;max-width:none}
   /* comparison rows */
-  .compare{border-top:1px solid rgba(61,85,168,.16);margin-top:.4em}
-  .compare .row{display:grid;grid-template-columns:1fr auto 1.15fr;gap:1.2em;align-items:center;
-    padding:clamp(.5rem,1.2vw,1rem) 0;border-bottom:1px solid rgba(61,85,168,.12)}
-  .compare .a{color:#8A90AE;text-align:right;font-size:clamp(.68rem,1.15vw,1rem);font-weight:300}
-  .compare .arrow{color:var(--rose);font-size:clamp(.8rem,1.3vw,1.15rem)}
-  .compare .b{color:var(--navy);font-weight:400;font-size:clamp(.72rem,1.2vw,1.05rem)}
+  .compare{border-top:1px solid rgba(61,85,168,.16);margin-top:.3em}
+  .compare .row{display:grid;grid-template-columns:1fr auto 1.15fr;gap:1.1em;align-items:center;
+    padding:clamp(.42rem,1vw,.85rem) 0;border-bottom:1px solid rgba(61,85,168,.12)}
+  .compare .a{color:#8A90AE;text-align:right;font-size:clamp(.62rem,1.05vw,.92rem);font-weight:300}
+  .compare .arrow{color:var(--rose);font-size:clamp(.75rem,1.2vw,1.05rem)}
+  .compare .b{color:var(--navy);font-weight:400;font-size:clamp(.66rem,1.1vw,.98rem)}
   /* dayparts */
-  .parts{margin-top:.4em}
-  .part{display:grid;grid-template-columns:minmax(120px,.55fr) minmax(90px,.4fr) 1.6fr;gap:1.4em;align-items:baseline;
-    padding:clamp(.5rem,1.25vw,1.05rem) 0;border-bottom:1px solid rgba(61,85,168,.12)}
-  .part .name{font-family:var(--serif);font-size:clamp(1rem,1.9vw,1.7rem);color:var(--indigo)}
-  .part .time{font-size:clamp(.6rem,.95vw,.85rem);letter-spacing:.1em;color:var(--rose)}
-  .part .desc{font-weight:300;color:#57608A;font-size:clamp(.7rem,1.15vw,1rem)}
-  /* tier cards */
-  .tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(.6rem,1.3vw,1.2rem);margin-top:.5em}
-  .tier{border-radius:12px;padding:clamp(.75rem,1.6vw,1.4rem);background:#fff;
+  .part{display:grid;grid-template-columns:minmax(105px,.5fr) minmax(85px,.38fr) 1.7fr;gap:1.2em;align-items:baseline;
+    padding:clamp(.42rem,1vw,.85rem) 0;border-bottom:1px solid rgba(61,85,168,.12)}
+  .part .name{font-family:var(--serif);font-size:clamp(.95rem,1.7vw,1.5rem);color:var(--indigo)}
+  .part .time{font-size:clamp(.55rem,.88vw,.8rem);letter-spacing:.1em;color:var(--rose)}
+  .part .desc{font-weight:300;color:#57608A;font-size:clamp(.64rem,1.05vw,.92rem)}
+  /* pillars */
+  .pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(.55rem,1.2vw,1.1rem);margin-top:1em}
+  .pillar{border-radius:12px;padding:clamp(.7rem,1.4vw,1.2rem);background:#fff;border:1px solid rgba(61,85,168,.12)}
+  .pillar .t{font-family:var(--serif);font-size:clamp(.95rem,1.6vw,1.4rem);color:var(--indigo);letter-spacing:.06em}
+  .pillar p{font-size:clamp(.58rem,.92vw,.82rem);margin-top:.5em;max-width:none}
+  /* distances */
+  .dist{display:grid;grid-template-columns:1fr 1fr;gap:0 3em;margin-top:.4em}
+  .dist .d{display:flex;justify-content:space-between;gap:1em;padding:clamp(.32rem,.75vw,.6rem) 0;
+    border-bottom:1px solid rgba(61,85,168,.1);font-size:clamp(.62rem,1vw,.9rem)}
+  .dist .d span:first-child{color:var(--navy);font-weight:400}
+  .dist .d span:last-child{color:var(--rose)}
+  /* tiers */
+  .tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(.55rem,1.2vw,1.1rem);margin-top:.4em}
+  .tier{border-radius:12px;padding:clamp(.7rem,1.4vw,1.25rem);background:#fff;
     border:1px solid rgba(61,85,168,.14);box-shadow:0 6px 18px rgba(61,85,168,.06)}
-  .tier .band{height:5px;border-radius:3px;margin-bottom:.9em;background:var(--g4)}
+  .tier .band{height:5px;border-radius:3px;margin-bottom:.8em;background:var(--g4)}
   .tier:nth-child(2) .band{background:var(--g2)}
   .tier:nth-child(3) .band{background:var(--g3)}
   .tier:nth-child(4) .band{background:var(--g1)}
-  .tier .t{font-family:var(--serif);font-size:clamp(.95rem,1.6vw,1.45rem);color:var(--navy)}
-  .tier .price{font-family:var(--serif);font-size:clamp(1.2rem,2.3vw,2.1rem);color:var(--indigo);margin:.15em 0}
-  .tier .slots{font-size:clamp(.5rem,.8vw,.7rem);letter-spacing:.14em;text-transform:uppercase;color:#8A90AE}
+  .tier .t{font-family:var(--serif);font-size:clamp(.9rem,1.5vw,1.35rem);color:var(--navy)}
+  .tier .price{font-family:var(--serif);font-size:clamp(1.1rem,2.1vw,1.95rem);color:var(--indigo);margin:.12em 0}
+  .tier .slots{font-size:clamp(.48rem,.76vw,.66rem);letter-spacing:.14em;text-transform:uppercase;color:#8A90AE}
   /* projections */
-  .ptable{margin-top:.4em;max-width:88%}
+  .ptable{margin-top:.35em;max-width:90%}
   .ptable .r{display:grid;grid-template-columns:1fr auto;gap:2em;align-items:baseline;
-    padding:clamp(.45rem,1.1vw,.95rem) 0;border-bottom:1px solid rgba(61,85,168,.12)}
-  .ptable .lbl{font-weight:300;color:#57608A;font-size:clamp(.72rem,1.2vw,1.05rem)}
-  .ptable .val{font-family:var(--serif);font-size:clamp(1.05rem,1.9vw,1.7rem);color:var(--navy)}
+    padding:clamp(.4rem,.95vw,.8rem) 0;border-bottom:1px solid rgba(61,85,168,.12)}
+  .ptable .lbl{font-weight:300;color:#57608A;font-size:clamp(.66rem,1.1vw,.98rem)}
+  .ptable .val{font-family:var(--serif);font-size:clamp(.95rem,1.75vw,1.55rem);color:var(--navy)}
   .ptable .r.hi .val{color:var(--indigo)}
-  /* growth cards */
-  .growth{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(.8rem,1.8vw,1.6rem);margin-top:.6em}
-  .yr{border-radius:12px;padding:clamp(.9rem,2vw,1.7rem);background:var(--g3);border:1px solid rgba(61,85,168,.08)}
+  .growth{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(.7rem,1.6vw,1.5rem);margin-top:.5em}
+  .yr{border-radius:12px;padding:clamp(.8rem,1.8vw,1.55rem);background:var(--g3);border:1px solid rgba(61,85,168,.08)}
   .yr:nth-child(2){background:var(--g4)}
   .yr:nth-child(3){background:var(--g2)}
-  .yr .y{font-size:clamp(.55rem,.9vw,.78rem);letter-spacing:.2em;text-transform:uppercase;color:#5A6390}
-  .yr .rev{font-family:var(--serif);font-size:clamp(1.6rem,3.4vw,3rem);color:var(--navy);margin:.25em 0}
-  .yr .pf{font-size:clamp(.62rem,1vw,.88rem);color:#5A6390}
-  /* ask slide */
+  .yr .y{font-size:clamp(.52rem,.85vw,.74rem);letter-spacing:.2em;text-transform:uppercase;color:#5A6390}
+  .yr .rev{font-family:var(--serif);font-size:clamp(1.45rem,3.1vw,2.7rem);color:var(--navy);margin:.22em 0}
+  .yr .pf{font-size:clamp(.58rem,.95vw,.84rem);color:#5A6390}
+  /* quotes */
+  .quote{font-family:var(--serif);font-style:italic;font-weight:400;
+    font-size:clamp(.95rem,1.8vw,1.6rem);line-height:1.35;color:var(--navy)}
+  .quote-src{margin-top:.5em;font-size:clamp(.52rem,.82vw,.72rem);letter-spacing:.22em;text-transform:uppercase;color:var(--rose)}
+  /* ask */
   .askslide{background:var(--g4)}
-  .askbig{font-family:var(--serif);font-weight:300;font-size:clamp(3.2rem,10vw,8.5rem);line-height:1;color:var(--navy)}
-  /* gradient slide bg for programming */
+  .askbig{font-family:var(--serif);font-weight:300;font-size:clamp(3rem,9.5vw,8rem);line-height:1;color:var(--navy)}
   .gslide{background:var(--g3)}
-  /* footer inside stage */
-  .sfoot{position:absolute;left:7.5%;right:7.5%;bottom:4.5%;display:flex;justify-content:space-between;z-index:5;
-    font-size:clamp(.46rem,.72vw,.62rem);letter-spacing:.3em;text-transform:uppercase;color:#9AA0BC;pointer-events:none}
+  /* contacts */
+  .contacts{display:grid;grid-template-columns:repeat(2,minmax(0,320px));gap:3em;justify-content:center;margin-top:2.2em;text-align:left}
+  .contact .nm{font-family:var(--serif);font-size:clamp(1rem,1.8vw,1.6rem);color:#fff}
+  .contact .rl{font-size:clamp(.55rem,.85vw,.75rem);letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.75);margin:.3em 0 .5em}
+  .contact .em{font-size:clamp(.62rem,1vw,.9rem);color:rgba(255,255,255,.92)}
+  .sfoot{position:absolute;left:7%;right:7%;bottom:4.2%;display:flex;justify-content:space-between;z-index:5;
+    font-size:clamp(.44rem,.7vw,.6rem);letter-spacing:.3em;text-transform:uppercase;color:#9AA0BC;pointer-events:none}
   .onphoto .sfoot{color:rgba(255,255,255,.7)}
-  /* deck chrome */
-  #ctr{position:fixed;bottom:1.1vh;left:50%;transform:translateX(-50%);display:flex;gap:9px;z-index:30}
+  #ctr{position:fixed;bottom:1.1vh;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:30}
   #ctr button{width:6px;height:6px;border-radius:50%;border:none;background:rgba(61,85,168,.25);cursor:pointer;padding:0;transition:.3s}
   #ctr button.on{background:var(--indigo);transform:scale(1.45)}
   @media(max-width:760px){
-    .split{grid-template-columns:1fr}
-    .accent{display:none}
-    .tiles,.tiers{grid-template-columns:repeat(2,1fr)}
-    .growth{grid-template-columns:1fr}
+    .split{grid-template-columns:1fr}.accent{display:none}
+    .tiles,.tiers,.pillars{grid-template-columns:repeat(2,1fr)}
+    .growth{grid-template-columns:1fr}.dist{grid-template-columns:1fr}
+    .contacts{grid-template-columns:1fr}
   }
 </style>
 </head>
 <body>
 <div id="frame"><div id="stage">
 
-  <!-- 1 · COVER (matches brand-guide cover) -->
+  <!-- 1 · COVER -->
   <section class="slide active onphoto">
     <div class="coverbg"><img src="assets/lake.png" alt=""/></div>
     <div class="coverwrap">
@@ -159,124 +164,227 @@
     <div class="sfoot"><span>64.1470° N</span><span>21.9426° W</span></div>
   </section>
 
-  <!-- 2 · SUMMARY -->
+  <!-- 2 · SUMMARY — the one-line concept, verbatim from the doc -->
   <section class="slide">
     <div class="pad"><div class="split">
       <div class="content">
-        <div class="eyebrow">Summary</div>
+        <div class="eyebrow">Summary · The One-Line Concept</div>
         <p class="lead">Iceland Eclipse took 3,333 people to the edge of the world for two minutes of darkness.</p>
-        <p class="lead" style="margin-top:1em">Midnight Sun brings <em style="color:var(--indigo)">three to four times</em> that many into the heart of Reykjavík — for three days where the darkness never comes at all.</p>
-        <p class="small" style="margin-top:1.6em">Same team. Same creative DNA. An expedition turned into a repeatable annual business.</p>
+        <p class="lead" style="margin-top:.9em">Midnight Sun brings <em style="color:var(--indigo)">three to four times</em> that many into the middle of Reykjavík for three days where the darkness never comes at all.</p>
+        <p style="margin-top:1.5em">Iceland Eclipse was an expedition. Midnight Sun is a city takeover. That inversion — remote to urban, scarcity to accessibility, two minutes of night to seventy-two hours of light — turns a once-in-a-century astronomical event into a repeatable annual business.</p>
       </div>
       <div class="accent"><img src="assets/sunset1.jpg" alt=""/></div>
     </div></div>
     <div class="sfoot"><span>Midnight Sun · Iceland</span><span>02</span></div>
   </section>
 
-  <!-- 3 · OPPORTUNITY -->
+  <!-- 3 · OPPORTUNITY I -->
   <section class="slide">
-    <div class="pad"><div class="split" style="grid-template-columns:.8fr 1.2fr">
+    <div class="pad"><div class="split" style="grid-template-columns:.75fr 1.25fr">
       <div class="accent"><img src="assets/downtown.jpg" alt=""/></div>
       <div class="content">
         <div class="eyebrow">The Opportunity</div>
-        <h2>We proved the demand,<br/>then turned most of it <em>away.</em></h2>
-        <div class="compare">
-          <div class="row"><div class="a">Hellissandur · pop. 360</div><div class="arrow">→</div><div class="b">Reykjavík · pop. 140,000</div></div>
-          <div class="row"><div class="a">Beds within 30 min · ~none</div><div class="arrow">→</div><div class="b">~5,620 hotel rooms + ~4,185 rentals</div></div>
-          <div class="row"><div class="a">2.5-hr airport transfer</div><div class="arrow">→</div><div class="b">50 min from Keflavík</div></div>
-          <div class="row"><div class="a">Marginal local audience</div><div class="arrow">→</div><div class="b">250,000+ in the capital region</div></div>
+        <h2>We just proved the demand —<br/>then turned most of it <em>away.</em></h2>
+        <p>Iceland Eclipse sold 3,333 passes to guests from 75+ countries with 287 artists and speakers. Hellissandur — a village of 360 — forced that cap.</p>
+        <div class="tiles t3" style="margin-top:1.1em">
+          <div class="tile"><div class="n">140%+</div><div class="l">Reykjavík hotel rates above baseline during the eclipse</div></div>
+          <div class="tile"><div class="n">$1,000+</div><div class="l">Average nightly rate</div></div>
+          <div class="tile"><div class="n">+53.7%</div><div class="l">Airbnb rates inside the path of totality</div></div>
         </div>
-        <p class="small" style="margin-top:1.2em">Sold out at 3,333 passes. Mid-July is open on the Icelandic festival calendar for the first time in years.</p>
+        <p class="small" style="margin-top:1.1em">Everyone priced out, boxed out, or sold out — plus the eclipse campaign's entire audience — is the founding market for Midnight Sun.</p>
       </div>
     </div></div>
     <div class="sfoot"><span>Midnight Sun · Iceland</span><span>03</span></div>
   </section>
 
-  <!-- 4 · TRACTION -->
+  <!-- 4 · OPPORTUNITY II — the comparison table from the doc -->
   <section class="slide">
     <div class="pad">
-      <div class="eyebrow">Traction · Iceland Eclipse 2026</div>
-      <h2>A sold-out proof of demand.</h2>
-      <div class="tiles">
-        <div class="tile"><div class="n">3,333</div><div class="l">Passes sold</div></div>
-        <div class="tile"><div class="n">75+</div><div class="l">Countries</div></div>
-        <div class="tile"><div class="n">287</div><div class="l">Artists &amp; speakers</div></div>
-        <div class="tile"><div class="n">100%</div><div class="l">Sold out</div></div>
-        <div class="tile"><div class="n">1.5M</div><div class="l">Page views</div></div>
-        <div class="tile"><div class="n">100k+</div><div class="l">Email list</div></div>
-        <div class="tile"><div class="n">44k+</div><div class="l">Instagram</div></div>
-        <div class="tile"><div class="n">50M+</div><div class="l">Impressions</div></div>
+      <div class="eyebrow">The Opportunity</div>
+      <h2>Reykjavík removes the constraint<br/>that capped the eclipse.</h2>
+      <div class="compare">
+        <div class="row"><div class="a">Hellissandur · pop. 360</div><div class="arrow">→</div><div class="b">Reykjavík · pop. ~140,000</div></div>
+        <div class="row"><div class="a">Beds within 30 min · effectively none</div><div class="arrow">→</div><div class="b">~5,620 hotel rooms + ~4,185 short-term rentals</div></div>
+        <div class="row"><div class="a">~2.5-hour drive from Keflavík</div><div class="arrow">→</div><div class="b">~50 minutes from Keflavík</div></div>
+        <div class="row"><div class="a">Marginal local audience</div><div class="arrow">→</div><div class="b">140k in the city · 250k+ in the capital region</div></div>
+        <div class="row"><div class="a">Open land, no weather shelter</div><div class="arrow">→</div><div class="b">Indoor venues on every side of the park</div></div>
+        <div class="row"><div class="a">Capacity set by accommodation</div><div class="arrow">→</div><div class="b">Capacity set by permit and turf</div></div>
       </div>
+      <p class="small" style="margin-top:1em">And mid-July is now genuinely vacant: LungA — the one festival that occupied the slot — ran its final edition in 2024. No domestic clash for Icelandic artists, crew, gear or press.</p>
     </div>
     <div class="sfoot"><span>Midnight Sun · Iceland</span><span>04</span></div>
   </section>
 
-  <!-- 5 · EXPERIENCE -->
+  <!-- 5 · EXPERIENCE — the astronomy -->
   <section class="slide">
     <div class="pad"><div class="split">
       <div class="content">
-        <div class="eyebrow">The Experience</div>
+        <div class="eyebrow">The Creative Spine</div>
         <h2>A festival with <em>no night.</em></h2>
-        <p>~20 hours of daylight. ~7 hours of golden-hour light nightly, 21:55 – 05:10 — the signature production asset, and it's free.</p>
-        <p class="small" style="margin-top:1.2em">Nothing in the standard festival playbook applies — which is exactly why it will look like nothing else on the circuit.</p>
+        <p>On 9–11 July the sun rises ~03:25 and sets ~23:35 — roughly <strong style="color:var(--navy);font-weight:500">20 hours of daylight</strong>. At solar midnight the sun sits only 3.5° below the horizon: no astronomical night, no nautical night. The darkest moment of the weekend is civil twilight.</p>
+        <p style="margin-top:1em">The sun holds the golden-hour band from <strong style="color:var(--navy);font-weight:500">~21:55 straight through to ~05:10 — seven hours of low, raking light.</strong> The most valuable production asset the event owns, and it is free.</p>
+        <p class="small" style="margin-top:1.1em">Nothing in the standard festival playbook works — no lasers, no darkness reveal, no headliner-under-the-stars. Every convention gets rebuilt, which is exactly why it will look like nothing else on the circuit.</p>
       </div>
       <div class="accent"><img src="assets/sunset2.jpg" alt=""/></div>
     </div></div>
     <div class="sfoot"><span>Midnight Sun · Iceland</span><span>05</span></div>
   </section>
 
-  <!-- 6 · PROGRAMMING -->
+  <!-- 6 · PROGRAMMING — dayparts + pillars -->
   <section class="slide gslide">
     <div class="pad">
-      <div class="eyebrow">Programming</div>
-      <h2>Programmed by light,<br/>not by stage.</h2>
-      <div class="parts">
-        <div class="part"><div class="name">Open</div><div class="time">12:00 – 17:00</div><div class="desc">Art, talks, family, markets</div></div>
-        <div class="part"><div class="name">High</div><div class="time">17:00 – 22:00</div><div class="desc">Main-stage build</div></div>
-        <div class="part"><div class="name">Low Sun</div><div class="time">22:00 – 00:00</div><div class="desc">The signature slot — headliners, live acts, choral spectacle</div></div>
-        <div class="part"><div class="name">White Night</div><div class="time">00:00 – 03:00</div><div class="desc">Downtown club circuit</div></div>
-        <div class="part"><div class="name">First Light</div><div class="time">03:00 – 06:00</div><div class="desc">Sunrise sets, pools, ceremony</div></div>
+      <div class="eyebrow">Programming · Structured by Quality of Light</div>
+      <div>
+        <div class="part"><div class="name">Open</div><div class="time">12:00 – 17:00</div><div class="desc">Art, talks, wellness, family, markets, emerging Icelandic acts — in the park</div></div>
+        <div class="part"><div class="name">High</div><div class="time">17:00 – 22:00</div><div class="desc">Main-stage build, big crossover bookings</div></div>
+        <div class="part"><div class="name">Low Sun</div><div class="time">22:00 – 00:00</div><div class="desc">The signature slot — headliners and choral spectacle in golden hour. The image the festival is remembered by</div></div>
+        <div class="part"><div class="name">White Night</div><div class="time">00:00 – 03:00</div><div class="desc">Club and late programming across downtown venues</div></div>
+        <div class="part"><div class="name">First Light</div><div class="time">03:00 – 06:00</div><div class="desc">Sunrise sets, geothermal pools, cold water, ambient, ceremony</div></div>
+      </div>
+      <div class="pillars">
+        <div class="pillar"><div class="t">DANCE</div><p>The anchor: global headliners + Icelandic marquee, ≥40% Icelandic slots</p></div>
+        <div class="pillar"><div class="t">EXPLORE</div><p>Excursions from a few hours to seven days — the second business</p></div>
+        <div class="pillar"><div class="t">LEARN</div><p>~20–30 curated sessions in real venues: geothermal, Arctic science, light &amp; circadian biology</p></div>
+        <div class="pillar"><div class="t">CONNECT</div><p>Wellness anchored in the city's pools; a FIRST LIGHT pool programme at 04:00</p></div>
       </div>
     </div>
     <div class="sfoot"><span>Midnight Sun · Iceland</span><span>06</span></div>
   </section>
 
-  <!-- 7 · PARTNERS -->
+  <!-- 7 · VENUE -->
   <section class="slide">
     <div class="pad">
-      <div class="eyebrow">Partners</div>
+      <div class="eyebrow">The Venue · Hljómskálagarðurinn</div>
+      <h2>The city <em>is</em> the infrastructure.</h2>
+      <p>Reykjavík built a purpose-designed event lawn here in 2023 — ISK 120–130m of sports-grade turf, drainage and integrated lighting, made "to receive crowds on major celebration days." Pride's 80,000-person parade already terminates here. Everything is walkable: no shuttles, no campsite mud, no parking fields.</p>
+      <div class="dist">
+        <div class="d"><span>National Gallery of Iceland</span><span>~300 m</span></div>
+        <div class="d"><span>Laugavegur club circuit</span><span>~670 m</span></div>
+        <div class="d"><span>Iðnó — late live</span><span>~360 m</span></div>
+        <div class="d"><span>Old Harbour — boat parties</span><span>~820 m</span></div>
+        <div class="d"><span>University of Iceland — talks</span><span>~420 m</span></div>
+        <div class="d"><span>Hallgrímskirkja — choral &amp; organ</span><span>~830 m</span></div>
+        <div class="d"><span>BSÍ terminal — excursion hub</span><span>~670 m</span></div>
+        <div class="d"><span>Harpa — late-night indoor anchor</span><span>~960 m</span></div>
+      </div>
+      <p class="small" style="margin-top:1em">The city's hotels, restaurants, bars, pools, museums and taxis are the festival's infrastructure — a fundamentally better cost structure than Snæfellsnes, and it shows up in the margin.</p>
+    </div>
+    <div class="sfoot"><span>Midnight Sun · Iceland</span><span>07</span></div>
+  </section>
+
+  <!-- 8 · TRACTION -->
+  <section class="slide">
+    <div class="pad">
+      <div class="eyebrow">Traction · Iceland Eclipse 2026</div>
+      <h2>A sold-out proof of demand.</h2>
+      <div class="tiles">
+        <div class="tile"><div class="n">3,333</div><div class="l">Passes sold — sold out</div></div>
+        <div class="tile"><div class="n">75+</div><div class="l">Countries</div></div>
+        <div class="tile"><div class="n">287</div><div class="l">Artists &amp; speakers</div></div>
+        <div class="tile"><div class="n">50M+</div><div class="l">Campaign impressions</div></div>
+        <div class="tile"><div class="n">1.5M</div><div class="l">Page views</div></div>
+        <div class="tile"><div class="n">750k</div><div class="l">Unique visitors</div></div>
+        <div class="tile"><div class="n">100k+</div><div class="l">Email list</div></div>
+        <div class="tile"><div class="n">126k+</div><div class="l">Social following</div></div>
+      </div>
+      <p class="small" style="margin-top:1.1em">And before Iceland: Texas Eclipse 2024 — 38,000+ attendees from 40 countries, 300+ contributors ranging from world-renowned artists and musicians to astronauts and futurists.</p>
+    </div>
+    <div class="sfoot"><span>Midnight Sun · Iceland</span><span>08</span></div>
+  </section>
+
+  <!-- 9 · AUDIENCE — poached from partnership deck -->
+  <section class="slide">
+    <div class="pad"><div class="split">
+      <div class="content">
+        <div class="eyebrow">Audience</div>
+        <h2>Influential. Affluent. Global.<br/>And half <em>Icelandic.</em></h2>
+        <p>Renowned entrepreneurs, scientists, activists, astronauts, artists, musicians and visionaries make up the community — with a cumulative reach in the hundreds of millions, representation from 40+ countries, and over half of attendees considered high-net-worth.</p>
+        <div class="tiles t3" style="margin-top:1em">
+          <div class="tile"><div class="n">35</div><div class="l">Average age</div></div>
+          <div class="tile"><div class="n">75%</div><div class="l">Hold a higher-education degree</div></div>
+          <div class="tile"><div class="n">50/50</div><div class="l">Target local / international split</div></div>
+        </div>
+        <p class="small" style="margin-top:1em">Local pricing in ISK, day and single-evening tickets, a genuinely Icelandic bill, and family programming in OPEN — because a festival the neighbours defend is a festival the city renews.</p>
+      </div>
+      <div class="accent"><img src="assets/sunset1.jpg" alt=""/></div>
+    </div></div>
+    <div class="sfoot"><span>Midnight Sun · Iceland</span><span>09</span></div>
+  </section>
+
+  <!-- 10 · PRODUCERS — poached from partnership deck -->
+  <section class="slide gslide">
+    <div class="pad">
+      <div class="eyebrow">The Producers</div>
       <h2>IMXP + Secret Solstice</h2>
-      <p style="margin-bottom:1.2em">Succeeding Secret Solstice in spirit and in slot, not in brand. Target categories: Icelandair / PLAY · hospitality &amp; hotels · Reykjavíkurborg &amp; Business Iceland · geothermal energy.</p>
+      <p>IMXP has built and grown the biggest events at the intersection of total solar eclipses, music and technology — Texas Eclipse 2024, Iceland Eclipse 2026. Founded in 2014, Secret Solstice became one of Iceland's biggest and highest-rated international festivals: 18K attendees, 70+ global and Icelandic artists, 100% renewable geothermal power, and one of the most digitally engaged festival audiences globally.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:3em;margin-top:1.6em;max-width:90%">
+        <div>
+          <div class="quote">"Secret Solstice is the summer festival to end all summer festivals."</div>
+          <div class="quote-src">— X</div>
+        </div>
+        <div>
+          <div class="quote">"There's truly nothing like Secret Solstice."</div>
+          <div class="quote-src">— Thump</div>
+        </div>
+      </div>
+      <p class="small" style="margin-top:1.4em">Midnight Sun succeeds Secret Solstice in spirit and in slot — not in brand.</p>
+    </div>
+    <div class="sfoot"><span>Midnight Sun · Iceland</span><span>10</span></div>
+  </section>
+
+  <!-- 11 · THE TRAVEL BUSINESS -->
+  <section class="slide">
+    <div class="pad">
+      <div class="eyebrow">The Travel Business · A Second P&amp;L</div>
+      <h2>A few hours, or a few days.</h2>
+      <p>Keflavík handled ~8.4M passengers in 2025; summer 2026 brings 28 airlines to 80 destinations. Airlift is not the bottleneck — accommodation is the business: tiered hotel packages bundled with the pass, room blocks locked twelve months out, camping to keep an affordable tier real.</p>
+      <div class="pillars" style="margin-top:1.2em">
+        <div class="pillar"><div class="t">Half-Day</div><p>Golden Circle express, Sky Lagoon, whale watching, Reykjanes — between dayparts</p></div>
+        <div class="pillar"><div class="t">Full-Day</div><p>South coast, glacier hikes — and Snæfellsnes as a pilgrimage back to the eclipse site</p></div>
+        <div class="pillar"><div class="t">Multi-Day</div><p>Ring Road, Highlands, Westfjords, Mývatn — 2 to 7 days, before and after</p></div>
+        <div class="pillar"><div class="t">Signature</div><p>The glacier party, the lava-tunnel concert, the harbour boat party, the geothermal pool party</p></div>
+      </div>
+      <p class="small" style="margin-top:1.1em">The signature side quests are the highest-margin, most sponsorable inventory in the model — the Secret Solstice inheritance worth keeping, generating the festival's best press for years.</p>
+    </div>
+    <div class="sfoot"><span>Midnight Sun · Iceland</span><span>11</span></div>
+  </section>
+
+  <!-- 12 · PARTNERS -->
+  <section class="slide">
+    <div class="pad">
+      <div class="eyebrow">Partnership Tiers</div>
+      <h2>Proven skeleton, new urban inventory.</h2>
       <div class="tiers">
         <div class="tier"><div class="band"></div><div class="t">Solar</div><div class="price">$500k</div><div class="slots">1 partner</div></div>
         <div class="tier"><div class="band"></div><div class="t">Lunar</div><div class="price">$200k</div><div class="slots">2 partners</div></div>
         <div class="tier"><div class="band"></div><div class="t">Orbital</div><div class="price">$100k</div><div class="slots">3 partners</div></div>
         <div class="tier"><div class="band"></div><div class="t">Satellite</div><div class="price">$20k</div><div class="slots">5 partners</div></div>
       </div>
-      <p class="small" style="margin-top:1.3em">Plus Unique Experiences $100k · Branded Excursions $50k · Innovation Residency $200k</p>
+      <p style="margin-top:1.2em">Plus Unique Experiences $100k · Branded Excursions $50k · Innovation Residency $200k — carried over from Iceland Eclipse.</p>
+      <p class="small" style="margin-top:.8em">What the city adds that the wilderness couldn't sell: an airline partner (Icelandair / PLAY — the most natural category in this market), a hospitality group, venue naming across the WHITE NIGHT circuit, the pools on FIRST LIGHT, city &amp; destination partners (Reykjavíkurborg, Business Iceland), and geothermal / renewable energy.</p>
     </div>
-    <div class="sfoot"><span>Midnight Sun · Iceland</span><span>07</span></div>
+    <div class="sfoot"><span>Midnight Sun · Iceland</span><span>12</span></div>
   </section>
 
-  <!-- 8 · PROJECTIONS -->
+  <!-- 13 · PROJECTIONS -->
   <section class="slide">
     <div class="pad"><div class="split" style="grid-template-columns:1.25fr .75fr">
       <div class="content">
-        <div class="eyebrow">Projections · 2027 base case · 6,000 tickets</div>
+        <div class="eyebrow">Projections · 2027 Base Case · 6,000 Tickets</div>
         <div class="ptable">
           <div class="r hi"><div class="lbl">Total revenue</div><div class="val">$7.86M</div></div>
           <div class="r"><div class="lbl">Gross margin</div><div class="val">$3.76M · 48%</div></div>
           <div class="r"><div class="lbl">Total expenses</div><div class="val">$3.58M</div></div>
           <div class="r hi"><div class="lbl">Profit</div><div class="val">$177k · 2%</div></div>
         </div>
-        <p class="small" style="margin-top:1.2em">Scenarios by ticket volume: 4,000 → −16% · 6,000 → 2% · 8,000 → 11%.<br/>Revenue mix: accommodations &amp; travel $4.05M · ticketing $2.27M · F&amp;B $990k · partnerships $500k.</p>
+        <p class="small" style="margin-top:1em">Revenue mix: accommodations &amp; travel $4.05M · ticketing $2.27M · F&amp;B $990k · partnerships $500k. Scenarios: 4,000 tickets → −16% · 6,000 → 2% · 8,000 → 11%. The urban model deletes the campsite city, shuttle fleet and generator load that a remote build carries.</p>
       </div>
-      <div class="accent"><img src="assets/sunset1.jpg" alt=""/></div>
+      <div class="accent"><img src="assets/downtown.jpg" alt=""/></div>
     </div></div>
-    <div class="sfoot"><span>Midnight Sun · Iceland</span><span>08</span></div>
+    <div class="sfoot"><span>Midnight Sun · Iceland</span><span>13</span></div>
   </section>
 
-  <!-- 9 · GROWTH -->
+  <!-- 14 · GROWTH -->
   <section class="slide">
     <div class="pad">
       <div class="eyebrow">Three-Year Growth</div>
@@ -286,23 +394,23 @@
         <div class="yr"><div class="y">2028 · 8,000 tickets</div><div class="rev">$10.86M</div><div class="pf">Profit $1.53M · 14%</div></div>
         <div class="yr"><div class="y">2029 · 10,000 tickets</div><div class="rev">$14.05M</div><div class="pf">Profit $2.82M · 20%</div></div>
       </div>
-      <p class="small" style="margin-top:1.4em">Gross margin holds at 48 – 51%; profit share expands as fixed costs spread across a larger base.</p>
+      <p class="small" style="margin-top:1.3em">Gross margin holds at 48–51% across the plan; profit share expands as fixed costs — talent, marketing, operations — spread across a larger base.</p>
     </div>
-    <div class="sfoot"><span>Midnight Sun · Iceland</span><span>09</span></div>
+    <div class="sfoot"><span>Midnight Sun · Iceland</span><span>14</span></div>
   </section>
 
-  <!-- 10 · THE ASK -->
+  <!-- 15 · THE ASK -->
   <section class="slide askslide">
     <div class="pad">
       <div class="eyebrow" style="color:var(--navy)">The Ask</div>
       <div class="askbig">~$450k</div>
-      <p style="margin-top:1.2em;color:var(--navy);max-width:44ch">Early-stage funding to bridge talent, production, and venue deposits ahead of ticket revenue landing near the July 2027 event.</p>
-      <p class="small" style="margin-top:.9em;color:#5A6390">Structure and terms being finalized with the founding team. Figure derived from the cash-flow model.</p>
+      <p style="margin-top:1.1em;color:var(--navy);max-width:46ch">Early-stage funding to bridge talent, production and venue deposits ahead of ticket revenue landing near the July 2027 event.</p>
+      <p class="small" style="margin-top:.8em;color:#5A6390">Structure and terms being finalized with the founding team. Figure derived from the cash-flow model.</p>
     </div>
-    <div class="sfoot" style="color:rgba(44,55,99,.55)"><span>Midnight Sun · Iceland</span><span>10</span></div>
+    <div class="sfoot" style="color:rgba(44,55,99,.55)"><span>Midnight Sun · Iceland</span><span>15</span></div>
   </section>
 
-  <!-- 11 · THANK YOU -->
+  <!-- 16 · THANK YOU + CONTACT (poached from partnership deck) -->
   <section class="slide onphoto">
     <div class="coverbg"><img src="assets/lake.png" alt=""/></div>
     <div class="coverwrap">
@@ -313,7 +421,11 @@
         </svg>
       </div>
       <h1 class="word" style="font-size:clamp(1.6rem,4.6vw,4rem)">Thank You</h1>
-      <div class="cover-sub">Midnight Sun · 9 – 11 July 2027 · Reykjavík, Iceland</div>
+      <div class="contacts">
+        <div class="contact"><div class="nm">Mitch Morales</div><div class="rl">Co-founder · IMXP</div><div class="em">mitch@iceland-eclipse.com</div></div>
+        <div class="contact"><div class="nm">Fred Olafsson</div><div class="rl">Co-founder · Secret Solstice</div><div class="em">fo@eclipse.is</div></div>
+      </div>
+      <div class="cover-sub" style="margin-top:2em">Midnight Sun · 9 – 11 July 2027 · Reykjavík, Iceland</div>
     </div>
     <div class="sfoot"><span>64.1470° N</span><span>21.9426° W</span></div>
   </section>
