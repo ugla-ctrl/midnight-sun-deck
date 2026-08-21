@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Midnight Sun — Investment Overview</title>
+<title>Midnight Sun · Investment Overview</title>
 <link rel="icon" href="assets/logo.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -50,7 +50,7 @@
   .coverbg img{width:100%;height:100%;object-fit:cover}
   .coverbg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(61,85,168,.18),rgba(44,55,99,.05) 45%,rgba(44,55,99,.32))}
   .coverwrap{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6%}
-  .mark{margin-bottom:2.2em}
+  .mark{margin-bottom:2.2em;filter:drop-shadow(0 0 14px rgba(255,255,255,.9)) drop-shadow(0 0 34px rgba(255,255,255,.5))}
   .cover-sub{margin-top:1.8em;font-weight:400;letter-spacing:.3em;text-transform:uppercase;
     font-size:clamp(.55rem,1vw,.85rem);line-height:2.1;color:rgba(255,255,255,.95)}
   .cover-tag{margin-top:2em;font-size:clamp(.5rem,.8vw,.68rem);letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.75)}
@@ -122,9 +122,12 @@
     font-size:clamp(.95rem,1.8vw,1.6rem);line-height:1.35;color:var(--navy)}
   .quote-src{margin-top:.5em;font-size:clamp(.52rem,.82vw,.72rem);letter-spacing:.22em;text-transform:uppercase;color:var(--rose)}
   /* ask */
-  .askslide{background:var(--g4)}
+  .askslide{background:url('assets/brand-bg.png') center/cover}
+  .askslide .pad{z-index:2;text-shadow:0 1px 22px rgba(44,55,99,.45)}
   .askbig{font-family:var(--serif);font-weight:300;font-size:clamp(3rem,9.5vw,8rem);line-height:1;color:var(--navy)}
-  .gslide{background:var(--g3)}
+  .gslide{background:var(--polar)}
+  .gslide::before{content:'';position:absolute;inset:0;background:url('assets/brand-bg.png') center/cover;opacity:.28}
+  .gslide .pad{z-index:2}
   /* contacts */
   .contacts{display:grid;grid-template-columns:repeat(2,minmax(0,320px));gap:3em;justify-content:center;margin-top:2.2em;text-align:left}
   .contact .nm{font-family:var(--serif);font-size:clamp(1rem,1.8vw,1.6rem);color:#fff}
@@ -164,14 +167,14 @@
     <div class="sfoot"><span>64.1470° N</span><span>21.9426° W</span></div>
   </section>
 
-  <!-- 2 · SUMMARY — the one-line concept, verbatim from the doc -->
+  <!-- 2 · SUMMARY · the one-line concept, verbatim from the doc -->
   <section class="slide">
     <div class="pad"><div class="split">
       <div class="content">
         <div class="eyebrow">Summary · The One-Line Concept</div>
         <p class="lead">Iceland Eclipse took 3,333 people to the edge of the world for two minutes of darkness.</p>
         <p class="lead" style="margin-top:.9em">Midnight Sun brings <em style="color:var(--indigo)">three to four times</em> that many into the middle of Reykjavík for three days where the darkness never comes at all.</p>
-        <p style="margin-top:1.5em">Iceland Eclipse was an expedition. Midnight Sun is a city takeover. That inversion — remote to urban, scarcity to accessibility, two minutes of night to seventy-two hours of light — turns a once-in-a-century astronomical event into a repeatable annual business.</p>
+        <p style="margin-top:1.5em">Iceland Eclipse was an expedition. Midnight Sun is a city takeover. That inversion, remote to urban, scarcity to accessibility, two minutes of night to seventy-two hours of light, turns a once-in-a-century astronomical event into a repeatable annual business.</p>
       </div>
       <div class="accent"><img src="assets/sunset1.jpg" alt=""/></div>
     </div></div>
@@ -184,20 +187,20 @@
       <div class="accent"><img src="assets/downtown.jpg" alt=""/></div>
       <div class="content">
         <div class="eyebrow">The Opportunity</div>
-        <h2>We just proved the demand —<br/>then turned most of it <em>away.</em></h2>
-        <p>Iceland Eclipse sold 3,333 passes to guests from 75+ countries with 287 artists and speakers. Hellissandur — a village of 360 — forced that cap.</p>
+        <h2>We just proved the demand,<br/>then turned most of it <em>away.</em></h2>
+        <p>Iceland Eclipse sold 3,333 passes to guests from 75+ countries with 287 artists and speakers. Hellissandur, a village of 360, forced that cap.</p>
         <div class="tiles t3" style="margin-top:1.1em">
           <div class="tile"><div class="n">140%+</div><div class="l">Reykjavík hotel rates above baseline during the eclipse</div></div>
           <div class="tile"><div class="n">$1,000+</div><div class="l">Average nightly rate</div></div>
           <div class="tile"><div class="n">+53.7%</div><div class="l">Airbnb rates inside the path of totality</div></div>
         </div>
-        <p class="small" style="margin-top:1.1em">Everyone priced out, boxed out, or sold out — plus the eclipse campaign's entire audience — is the founding market for Midnight Sun.</p>
+        <p class="small" style="margin-top:1.1em">Everyone priced out, boxed out, or sold out, plus the eclipse campaign's entire audience, is the founding market for Midnight Sun.</p>
       </div>
     </div></div>
     <div class="sfoot"><span>Midnight Sun · Iceland</span><span>03</span></div>
   </section>
 
-  <!-- 4 · OPPORTUNITY II — the comparison table from the doc -->
+  <!-- 4 · OPPORTUNITY II · the comparison table from the doc -->
   <section class="slide">
     <div class="pad">
       <div class="eyebrow">The Opportunity</div>
@@ -210,40 +213,40 @@
         <div class="row"><div class="a">Open land, no weather shelter</div><div class="arrow">→</div><div class="b">Indoor venues on every side of the park</div></div>
         <div class="row"><div class="a">Capacity set by accommodation</div><div class="arrow">→</div><div class="b">Capacity set by permit and turf</div></div>
       </div>
-      <p class="small" style="margin-top:1em">And mid-July is now genuinely vacant: LungA — the one festival that occupied the slot — ran its final edition in 2024. No domestic clash for Icelandic artists, crew, gear or press.</p>
+      <p class="small" style="margin-top:1em">And mid-July is now genuinely vacant: LungA, the one festival that occupied the slot, ran its final edition in 2024. No domestic clash for Icelandic artists, crew, gear or press.</p>
     </div>
     <div class="sfoot"><span>Midnight Sun · Iceland</span><span>04</span></div>
   </section>
 
-  <!-- 5 · EXPERIENCE — the astronomy -->
+  <!-- 5 · EXPERIENCE · the astronomy -->
   <section class="slide">
     <div class="pad"><div class="split">
       <div class="content">
         <div class="eyebrow">The Creative Spine</div>
         <h2>A festival with <em>no night.</em></h2>
-        <p>On 9–11 July the sun rises ~03:25 and sets ~23:35 — roughly <strong style="color:var(--navy);font-weight:500">20 hours of daylight</strong>. At solar midnight the sun sits only 3.5° below the horizon: no astronomical night, no nautical night. The darkest moment of the weekend is civil twilight.</p>
-        <p style="margin-top:1em">The sun holds the golden-hour band from <strong style="color:var(--navy);font-weight:500">~21:55 straight through to ~05:10 — seven hours of low, raking light.</strong> The most valuable production asset the event owns, and it is free.</p>
-        <p class="small" style="margin-top:1.1em">Nothing in the standard festival playbook works — no lasers, no darkness reveal, no headliner-under-the-stars. Every convention gets rebuilt, which is exactly why it will look like nothing else on the circuit.</p>
+        <p>On 9–11 July the sun rises ~03:25 and sets ~23:35, roughly <strong style="color:var(--navy);font-weight:500">20 hours of daylight</strong>. At solar midnight the sun sits only 3.5° below the horizon: no astronomical night, no nautical night. The darkest moment of the weekend is civil twilight.</p>
+        <p style="margin-top:1em">The sun holds the golden-hour band from <strong style="color:var(--navy);font-weight:500">~21:55 straight through to ~05:10, seven hours of low, raking light.</strong> The most valuable production asset the event owns, and it is free.</p>
+        <p class="small" style="margin-top:1.1em">Nothing in the standard festival playbook works: no lasers, no darkness reveal, no headliner-under-the-stars. Every convention gets rebuilt, which is exactly why it will look like nothing else on the circuit.</p>
       </div>
       <div class="accent"><img src="assets/sunset2.jpg" alt=""/></div>
     </div></div>
     <div class="sfoot"><span>Midnight Sun · Iceland</span><span>05</span></div>
   </section>
 
-  <!-- 6 · PROGRAMMING — dayparts + pillars -->
+  <!-- 6 · PROGRAMMING · dayparts + pillars -->
   <section class="slide gslide">
     <div class="pad">
       <div class="eyebrow">Programming · Structured by Quality of Light</div>
       <div>
-        <div class="part"><div class="name">Open</div><div class="time">12:00 – 17:00</div><div class="desc">Art, talks, wellness, family, markets, emerging Icelandic acts — in the park</div></div>
+        <div class="part"><div class="name">Open</div><div class="time">12:00 – 17:00</div><div class="desc">Art, talks, wellness, family, markets, emerging Icelandic acts, in the park</div></div>
         <div class="part"><div class="name">High</div><div class="time">17:00 – 22:00</div><div class="desc">Main-stage build, big crossover bookings</div></div>
-        <div class="part"><div class="name">Low Sun</div><div class="time">22:00 – 00:00</div><div class="desc">The signature slot — headliners and choral spectacle in golden hour. The image the festival is remembered by</div></div>
+        <div class="part"><div class="name">Low Sun</div><div class="time">22:00 – 00:00</div><div class="desc">The signature slot: headliners and choral spectacle in golden hour. The image the festival is remembered by</div></div>
         <div class="part"><div class="name">White Night</div><div class="time">00:00 – 03:00</div><div class="desc">Club and late programming across downtown venues</div></div>
         <div class="part"><div class="name">First Light</div><div class="time">03:00 – 06:00</div><div class="desc">Sunrise sets, geothermal pools, cold water, ambient, ceremony</div></div>
       </div>
       <div class="pillars">
         <div class="pillar"><div class="t">DANCE</div><p>The anchor: global headliners + Icelandic marquee, ≥40% Icelandic slots</p></div>
-        <div class="pillar"><div class="t">EXPLORE</div><p>Excursions from a few hours to seven days — the second business</p></div>
+        <div class="pillar"><div class="t">EXPLORE</div><p>Excursions from a few hours to seven days, the second business</p></div>
         <div class="pillar"><div class="t">LEARN</div><p>~20–30 curated sessions in real venues: geothermal, Arctic science, light &amp; circadian biology</p></div>
         <div class="pillar"><div class="t">CONNECT</div><p>Wellness anchored in the city's pools; a FIRST LIGHT pool programme at 04:00</p></div>
       </div>
@@ -256,18 +259,18 @@
     <div class="pad">
       <div class="eyebrow">The Venue · Hljómskálagarðurinn</div>
       <h2>The city <em>is</em> the infrastructure.</h2>
-      <p>Reykjavík built a purpose-designed event lawn here in 2023 — ISK 120–130m of sports-grade turf, drainage and integrated lighting, made "to receive crowds on major celebration days." Pride's 80,000-person parade already terminates here. Everything is walkable: no shuttles, no campsite mud, no parking fields.</p>
+      <p>Reykjavík built a purpose-designed event lawn here in 2023: ISK 120–130m of sports-grade turf, drainage and integrated lighting, made "to receive crowds on major celebration days." Pride's 80,000-person parade already terminates here. Everything is walkable: no shuttles, no campsite mud, no parking fields.</p>
       <div class="dist">
         <div class="d"><span>National Gallery of Iceland</span><span>~300 m</span></div>
         <div class="d"><span>Laugavegur club circuit</span><span>~670 m</span></div>
-        <div class="d"><span>Iðnó — late live</span><span>~360 m</span></div>
-        <div class="d"><span>Old Harbour — boat parties</span><span>~820 m</span></div>
-        <div class="d"><span>University of Iceland — talks</span><span>~420 m</span></div>
-        <div class="d"><span>Hallgrímskirkja — choral &amp; organ</span><span>~830 m</span></div>
-        <div class="d"><span>BSÍ terminal — excursion hub</span><span>~670 m</span></div>
-        <div class="d"><span>Harpa — late-night indoor anchor</span><span>~960 m</span></div>
+        <div class="d"><span>Iðnó · late live</span><span>~360 m</span></div>
+        <div class="d"><span>Old Harbour · boat parties</span><span>~820 m</span></div>
+        <div class="d"><span>University of Iceland · talks</span><span>~420 m</span></div>
+        <div class="d"><span>Hallgrímskirkja · choral &amp; organ</span><span>~830 m</span></div>
+        <div class="d"><span>BSÍ terminal · excursion hub</span><span>~670 m</span></div>
+        <div class="d"><span>Harpa · late-night indoor anchor</span><span>~960 m</span></div>
       </div>
-      <p class="small" style="margin-top:1em">The city's hotels, restaurants, bars, pools, museums and taxis are the festival's infrastructure — a fundamentally better cost structure than Snæfellsnes, and it shows up in the margin.</p>
+      <p class="small" style="margin-top:1em">The city's hotels, restaurants, bars, pools, museums and taxis are the festival's infrastructure, a fundamentally better cost structure than Snæfellsnes, and it shows up in the margin.</p>
     </div>
     <div class="sfoot"><span>Midnight Sun · Iceland</span><span>07</span></div>
   </section>
@@ -278,7 +281,7 @@
       <div class="eyebrow">Traction · Iceland Eclipse 2026</div>
       <h2>A sold-out proof of demand.</h2>
       <div class="tiles">
-        <div class="tile"><div class="n">3,333</div><div class="l">Passes sold — sold out</div></div>
+        <div class="tile"><div class="n">3,333</div><div class="l">Passes sold, sold out</div></div>
         <div class="tile"><div class="n">75+</div><div class="l">Countries</div></div>
         <div class="tile"><div class="n">287</div><div class="l">Artists &amp; speakers</div></div>
         <div class="tile"><div class="n">50M+</div><div class="l">Campaign impressions</div></div>
@@ -287,47 +290,47 @@
         <div class="tile"><div class="n">100k+</div><div class="l">Email list</div></div>
         <div class="tile"><div class="n">126k+</div><div class="l">Social following</div></div>
       </div>
-      <p class="small" style="margin-top:1.1em">And before Iceland: Texas Eclipse 2024 — 38,000+ attendees from 40 countries, 300+ contributors ranging from world-renowned artists and musicians to astronauts and futurists.</p>
+      <p class="small" style="margin-top:1.1em">And before Iceland: Texas Eclipse 2024, 38,000+ attendees from 40 countries, 300+ contributors ranging from world-renowned artists and musicians to astronauts and futurists.</p>
     </div>
     <div class="sfoot"><span>Midnight Sun · Iceland</span><span>08</span></div>
   </section>
 
-  <!-- 9 · AUDIENCE — poached from partnership deck -->
+  <!-- 9 · AUDIENCE · poached from partnership deck -->
   <section class="slide">
     <div class="pad"><div class="split">
       <div class="content">
         <div class="eyebrow">Audience</div>
         <h2>Influential. Affluent. Global.<br/>And half <em>Icelandic.</em></h2>
-        <p>Renowned entrepreneurs, scientists, activists, astronauts, artists, musicians and visionaries make up the community — with a cumulative reach in the hundreds of millions, representation from 40+ countries, and over half of attendees considered high-net-worth.</p>
+        <p>Renowned entrepreneurs, scientists, activists, astronauts, artists, musicians and visionaries make up the community, with a cumulative reach in the hundreds of millions, representation from 40+ countries, and over half of attendees considered high-net-worth.</p>
         <div class="tiles t3" style="margin-top:1em">
           <div class="tile"><div class="n">35</div><div class="l">Average age</div></div>
           <div class="tile"><div class="n">75%</div><div class="l">Hold a higher-education degree</div></div>
           <div class="tile"><div class="n">50/50</div><div class="l">Target local / international split</div></div>
         </div>
-        <p class="small" style="margin-top:1em">Local pricing in ISK, day and single-evening tickets, a genuinely Icelandic bill, and family programming in OPEN — because a festival the neighbours defend is a festival the city renews.</p>
+        <p class="small" style="margin-top:1em">Local pricing in ISK, day and single-evening tickets, a genuinely Icelandic bill, and family programming in OPEN, because a festival the neighbours defend is a festival the city renews.</p>
       </div>
-      <div class="accent"><img src="assets/sunset1.jpg" alt=""/></div>
+      <div class="accent"><img src="assets/photo1.jpg" alt=""/></div>
     </div></div>
     <div class="sfoot"><span>Midnight Sun · Iceland</span><span>09</span></div>
   </section>
 
-  <!-- 10 · PRODUCERS — poached from partnership deck -->
+  <!-- 10 · PRODUCERS · poached from partnership deck -->
   <section class="slide gslide">
     <div class="pad">
       <div class="eyebrow">The Producers</div>
       <h2>IMXP + Secret Solstice</h2>
-      <p>IMXP has built and grown the biggest events at the intersection of total solar eclipses, music and technology — Texas Eclipse 2024, Iceland Eclipse 2026. Founded in 2014, Secret Solstice became one of Iceland's biggest and highest-rated international festivals: 18K attendees, 70+ global and Icelandic artists, 100% renewable geothermal power, and one of the most digitally engaged festival audiences globally.</p>
+      <p>IMXP has built and grown the biggest events at the intersection of total solar eclipses, music and technology, Texas Eclipse 2024, Iceland Eclipse 2026. Founded in 2014, Secret Solstice became one of Iceland's biggest and highest-rated international festivals: 18K attendees, 70+ global and Icelandic artists, 100% renewable geothermal power, and one of the most digitally engaged festival audiences globally.</p>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:3em;margin-top:1.6em;max-width:90%">
         <div>
           <div class="quote">"Secret Solstice is the summer festival to end all summer festivals."</div>
-          <div class="quote-src">— X</div>
+          <div class="quote-src">- X</div>
         </div>
         <div>
           <div class="quote">"There's truly nothing like Secret Solstice."</div>
-          <div class="quote-src">— Thump</div>
+          <div class="quote-src">- Thump</div>
         </div>
       </div>
-      <p class="small" style="margin-top:1.4em">Midnight Sun succeeds Secret Solstice in spirit and in slot — not in brand.</p>
+      <p class="small" style="margin-top:1.4em">Midnight Sun succeeds Secret Solstice in spirit and in slot, not in brand.</p>
     </div>
     <div class="sfoot"><span>Midnight Sun · Iceland</span><span>10</span></div>
   </section>
@@ -337,14 +340,14 @@
     <div class="pad">
       <div class="eyebrow">The Travel Business · A Second P&amp;L</div>
       <h2>A few hours, or a few days.</h2>
-      <p>Keflavík handled ~8.4M passengers in 2025; summer 2026 brings 28 airlines to 80 destinations. Airlift is not the bottleneck — accommodation is the business: tiered hotel packages bundled with the pass, room blocks locked twelve months out, camping to keep an affordable tier real.</p>
+      <p>Keflavík handled ~8.4M passengers in 2025; summer 2026 brings 28 airlines to 80 destinations. Airlift is not the bottleneck, accommodation is the business: tiered hotel packages bundled with the pass, room blocks locked twelve months out, camping to keep an affordable tier real.</p>
       <div class="pillars" style="margin-top:1.2em">
-        <div class="pillar"><div class="t">Half-Day</div><p>Golden Circle express, Sky Lagoon, whale watching, Reykjanes — between dayparts</p></div>
-        <div class="pillar"><div class="t">Full-Day</div><p>South coast, glacier hikes — and Snæfellsnes as a pilgrimage back to the eclipse site</p></div>
-        <div class="pillar"><div class="t">Multi-Day</div><p>Ring Road, Highlands, Westfjords, Mývatn — 2 to 7 days, before and after</p></div>
+        <div class="pillar"><div class="t">Half-Day</div><p>Golden Circle express, Sky Lagoon, whale watching, Reykjanes, between dayparts</p></div>
+        <div class="pillar"><div class="t">Full-Day</div><p>South coast, glacier hikes, and Snæfellsnes as a pilgrimage back to the eclipse site</p></div>
+        <div class="pillar"><div class="t">Multi-Day</div><p>Ring Road, Highlands, Westfjords, Mývatn, 2 to 7 days, before and after</p></div>
         <div class="pillar"><div class="t">Signature</div><p>The glacier party, the lava-tunnel concert, the harbour boat party, the geothermal pool party</p></div>
       </div>
-      <p class="small" style="margin-top:1.1em">The signature side quests are the highest-margin, most sponsorable inventory in the model — the Secret Solstice inheritance worth keeping, generating the festival's best press for years.</p>
+      <p class="small" style="margin-top:1.1em">The signature side quests are the highest-margin, most sponsorable inventory in the model, the Secret Solstice inheritance worth keeping, generating the festival's best press for years.</p>
     </div>
     <div class="sfoot"><span>Midnight Sun · Iceland</span><span>11</span></div>
   </section>
@@ -360,8 +363,8 @@
         <div class="tier"><div class="band"></div><div class="t">Orbital</div><div class="price">$100k</div><div class="slots">3 partners</div></div>
         <div class="tier"><div class="band"></div><div class="t">Satellite</div><div class="price">$20k</div><div class="slots">5 partners</div></div>
       </div>
-      <p style="margin-top:1.2em">Plus Unique Experiences $100k · Branded Excursions $50k · Innovation Residency $200k — carried over from Iceland Eclipse.</p>
-      <p class="small" style="margin-top:.8em">What the city adds that the wilderness couldn't sell: an airline partner (Icelandair / PLAY — the most natural category in this market), a hospitality group, venue naming across the WHITE NIGHT circuit, the pools on FIRST LIGHT, city &amp; destination partners (Reykjavíkurborg, Business Iceland), and geothermal / renewable energy.</p>
+      <p style="margin-top:1.2em">Plus Unique Experiences $100k · Branded Excursions $50k · Innovation Residency $200k, carried over from Iceland Eclipse.</p>
+      <p class="small" style="margin-top:.8em">What the city adds that the wilderness couldn't sell: an airline partner (Icelandair / PLAY, the most natural category in this market), a hospitality group, venue naming across the WHITE NIGHT circuit, the pools on FIRST LIGHT, city &amp; destination partners (Reykjavíkurborg, Business Iceland), and geothermal / renewable energy.</p>
     </div>
     <div class="sfoot"><span>Midnight Sun · Iceland</span><span>12</span></div>
   </section>
@@ -379,12 +382,12 @@
         </div>
         <p class="small" style="margin-top:1em">Revenue mix: accommodations &amp; travel $4.05M · ticketing $2.27M · F&amp;B $990k · partnerships $500k. Scenarios: 4,000 tickets → −16% · 6,000 → 2% · 8,000 → 11%. The urban model deletes the campsite city, shuttle fleet and generator load that a remote build carries.</p>
       </div>
-      <div class="accent"><img src="assets/downtown.jpg" alt=""/></div>
+      <div class="accent"><img src="assets/photo2.jpg" alt=""/></div>
     </div></div>
     <div class="sfoot"><span>Midnight Sun · Iceland</span><span>13</span></div>
   </section>
 
-  <!-- 14 · PRICING & ROADMAP — from the budget artifact -->
+  <!-- 14 · PRICING & ROADMAP · from the budget artifact -->
   <section class="slide gslide">
     <div class="pad">
       <div class="eyebrow">Pricing &amp; Roadmap · From the Operating Budget</div>
@@ -392,7 +395,7 @@
       <div class="tiles">
         <div class="tile"><div class="n">$249–449</div><div class="l">GA by phase · $500 door</div></div>
         <div class="tile"><div class="n">$749–949</div><div class="l">VIP by phase · $1,000 door</div></div>
-        <div class="tile"><div class="n">$272</div><div class="l">Local pass — the 50/50 mechanism</div></div>
+        <div class="tile"><div class="n">$272</div><div class="l">Local pass, the 50/50 mechanism</div></div>
         <div class="tile"><div class="n">$378</div><div class="l">Average net ticket</div></div>
       </div>
       <div class="compare" style="margin-top:1.1em">
@@ -417,20 +420,20 @@
         <div class="yr"><div class="y">2028 · 8,000 tickets</div><div class="rev">$10.86M</div><div class="pf">Profit $1.53M · 14%</div></div>
         <div class="yr"><div class="y">2029 · 10,000 tickets</div><div class="rev">$14.05M</div><div class="pf">Profit $2.82M · 20%</div></div>
       </div>
-      <p class="small" style="margin-top:1.3em">Gross margin holds at 48–51% across the plan; profit share expands as fixed costs — talent, marketing, operations — spread across a larger base.</p>
+      <p class="small" style="margin-top:1.3em">Gross margin holds at 48–51% across the plan; profit share expands as fixed costs, talent, marketing, operations, spread across a larger base.</p>
     </div>
     <div class="sfoot"><span>Midnight Sun · Iceland</span><span>15</span></div>
   </section>
 
-  <!-- 16 · THE ASK — exact, from the budget's funding plan -->
+  <!-- 16 · THE ASK · exact, from the budget's funding plan -->
   <section class="slide askslide">
     <div class="pad">
-      <div class="eyebrow" style="color:var(--navy)">The Ask</div>
-      <div class="askbig">$450k</div>
-      <p style="margin-top:1.1em;color:var(--navy);max-width:48ch">Two tranches, per the operating budget's funding plan: <strong style="font-weight:500">$150k at on-sale (Sep 2026)</strong> and <strong style="font-weight:500">$300k in Nov 2026</strong> — bridging talent deposits, production deposits and early marketing ahead of ticket revenue landing at the July 2027 event.</p>
-      <p class="small" style="margin-top:.8em;color:#5A6390">Structure and terms with the founding team. Model shows full repayment capacity from event cash flows at the 6,000-ticket base case.</p>
+      <div class="eyebrow" style="color:#fff">The Ask</div>
+      <div class="askbig" style="color:#fff;letter-spacing:.06em">$450k</div>
+      <p style="margin-top:1.1em;color:rgba(255,255,255,.96);max-width:48ch">Two tranches, per the operating budget's funding plan: <strong style="font-weight:500;color:#fff">$150k at on-sale (Sep 2026)</strong> and <strong style="font-weight:500;color:#fff">$300k in Nov 2026</strong>, bridging talent deposits, production deposits and early marketing ahead of ticket revenue landing at the July 2027 event.</p>
+      <p class="small" style="margin-top:.8em;color:rgba(255,255,255,.85)">Structure and terms with the founding team. Model shows full repayment capacity from event cash flows at the 6,000-ticket base case.</p>
     </div>
-    <div class="sfoot" style="color:rgba(44,55,99,.55)"><span>Midnight Sun · Iceland</span><span>16</span></div>
+    <div class="sfoot" style="color:rgba(255,255,255,.75)"><span>Midnight Sun · Iceland</span><span>16</span></div>
   </section>
 
   <!-- 17 · THANK YOU + CONTACT (poached from partnership deck) -->
