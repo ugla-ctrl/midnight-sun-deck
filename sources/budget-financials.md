@@ -100,3 +100,7 @@ This bridges early deposits before ticket revenue lands: Talent deposit ($125,00
 - **Talent:** Music Tier 1 $500k (25% deposit $125k due 10/16/26) · Tier 2 $100k (25% due 1/22/27) · Tier 3 $50k, Non-Music $100k, Other $50k (50% due 6/11/27)
 - **Production:** Staff $250k, Stage Production $220k, Security $205,714, and 20+ other line items, mostly 50% deposit due 4/16/27
 - **Operations:** Venue rental $100k (0% deposit, due 8/14/26), GL Insurance $54k and Cancellation Insurance $235,669 (100% due 6/11/27)
+
+---
+
+**Override (24 Aug 2026, Mitch via Slack DM):** The deck now intentionally deviates from this sheet in two places — the Iceland Eclipse sales figure is stated as **3,000** (was 3,333) and the Ask slide is **$1M** (was the sheet's $450k two-tranche plan). The First Light daypart (03:00–06:00) was also cut from the programming slide.
