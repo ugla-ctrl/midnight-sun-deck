@@ -63,6 +63,7 @@
   .coverbg{position:absolute;inset:0}
   .coverbg img{width:100%;height:100%;object-fit:cover}
   .coverbg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(61,85,168,.18),rgba(44,55,99,.05) 45%,rgba(44,55,99,.32))}
+  .textscrim{position:absolute;inset:0;z-index:1;background:linear-gradient(100deg,rgba(30,38,72,.72) 0%,rgba(30,38,72,.52) 32%,rgba(30,38,72,.12) 62%,rgba(30,38,72,0) 78%)}
   .coverwrap{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6%}
   .mark{margin-bottom:2.2em;filter:drop-shadow(0 0 14px rgba(255,255,255,.9)) drop-shadow(0 0 34px rgba(255,255,255,.5))}
   .cover-sub{margin-top:1.8em;font-weight:400;letter-spacing:.3em;text-transform:uppercase;
@@ -408,18 +409,17 @@
     <div class="sfoot"><span>Midnight Sun · Iceland</span><span>04</span></div>
   </section>
 
-  <!-- 5 · EXPERIENCE · the astronomy -->
-  <section class="slide">
-    <div class="pad"><div class="split">
-      <div class="content">
-        <div class="eyebrow">The Creative Spine</div>
-        <h2>A festival with <em>no night.</em></h2>
-        <p>On 9–11 July the sun rises ~03:25 and sets ~23:35, roughly <strong style="color:var(--navy);font-weight:500">20 hours of daylight</strong>. At solar midnight the sun sits only 3.5° below the horizon: no astronomical night, no nautical night. The darkest moment of the weekend is civil twilight.</p>
-        <p style="margin-top:1em">The sun holds the golden-hour band from <strong style="color:var(--navy);font-weight:500">~21:55 straight through to ~05:10, seven hours of low, raking light.</strong> The most valuable production asset the event owns, and it is free.</p>
-        <p class="small" style="margin-top:1.1em">Nothing in the standard festival playbook works: no lasers, no darkness reveal, no headliner-under-the-stars. Every convention gets rebuilt, which is exactly why it will look like nothing else on the circuit.</p>
-      </div>
-      <div class="accent"><img src="assets/sunset2.jpg" alt=""/></div>
-    </div></div>
+  <!-- 5 · EXPERIENCE · the astronomy · full-bleed, the deck's best claim gets the deck's biggest image -->
+  <section class="slide onphoto">
+    <div class="coverbg"><img src="assets/sunset2.jpg" alt=""/></div>
+    <div class="textscrim"></div>
+    <div class="pad" style="z-index:2;text-shadow:0 1px 22px rgba(44,55,99,.5)">
+      <div class="eyebrow" style="color:#fff">The Creative Spine</div>
+      <h2 style="color:#fff">A festival with <em style="color:var(--pearl)">no night.</em></h2>
+      <p style="color:rgba(255,255,255,.96);max-width:58ch">On 9–11 July the sun rises ~03:25 and sets ~23:35, roughly <strong style="color:#fff;font-weight:500">20 hours of daylight</strong>. At solar midnight the sun sits only 3.5° below the horizon: no astronomical night, no nautical night. The darkest moment of the weekend is civil twilight.</p>
+      <p style="margin-top:1em;color:rgba(255,255,255,.96);max-width:58ch">The sun holds the golden-hour band from <strong style="color:#fff;font-weight:500">~21:55 straight through to ~05:10, seven hours of low, raking light.</strong> The most valuable production asset the event owns, and it is free.</p>
+      <p class="small" style="margin-top:1.1em;color:rgba(255,255,255,.85);max-width:58ch">Nothing in the standard festival playbook works: no lasers, no darkness reveal, no headliner-under-the-stars. Every convention gets rebuilt, which is exactly why it will look like nothing else on the circuit.</p>
+    </div>
     <div class="sfoot"><span>Midnight Sun · Iceland</span><span>05</span></div>
   </section>
 
@@ -517,7 +517,7 @@
       <div class="eyebrow">The Producers</div>
       <h2>IMXP + Secret Solstice</h2>
       <p class="lead" style="max-width:none">Midnight Sun succeeds Secret Solstice in spirit and in slot, not in brand.</p>
-      <p style="margin-top:.9em">IMXP has built and grown the biggest events at the intersection of total solar eclipses, music and technology, Texas Eclipse 2024, Iceland Eclipse 2026. Founded in 2014, Secret Solstice became one of Iceland's biggest and highest-rated international festivals: 18K attendees, 70+ global and Icelandic artists, 100% renewable geothermal power, and one of the most digitally engaged festival audiences globally.</p>
+      <p style="margin-top:.9em">IMXP has built and grown the biggest events at the intersection of total solar eclipses, music and technology, Texas Eclipse 2024, Iceland Eclipse 2026. Founded in 2014, Secret Solstice became one of Iceland's biggest and highest-rated international festivals: 18K attendees at its 2017 peak, 70+ global and Icelandic artists, 100% renewable geothermal power, and one of the most digitally engaged festival audiences globally.</p>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:3em;margin-top:1.6em;max-width:90%">
         <div>
           <div class="quote">"Secret Solstice is the summer festival to end all summer festivals."</div>
@@ -554,7 +554,8 @@
     <div class="pad">
       <div class="eyebrow">Partnership Tiers</div>
       <h2>Proven skeleton, new urban inventory.</h2>
-      <div class="tiers">
+      <p class="lead" style="max-width:none;font-size:clamp(1rem,1.9vw,1.5rem)">Evidence of a revenue line, not a second ask: $1.65M of sponsorship inventory at full sell-through, priced against a rate card that sold in 2026.</p>
+      <div class="tiers" style="margin-top:1em">
         <div class="tier"><div class="band"></div><div class="t">Solar</div><div class="price">$500k</div><div class="slots">1 partner</div></div>
         <div class="tier"><div class="band"></div><div class="t">Lunar</div><div class="price">$200k</div><div class="slots">2 partners</div></div>
         <div class="tier"><div class="band"></div><div class="t">Orbital</div><div class="price">$100k</div><div class="slots">3 partners</div></div>
@@ -577,7 +578,8 @@
           <div class="r"><div class="lbl">Total expenses</div><div class="val">$3.58M</div></div>
           <div class="r hi"><div class="lbl">Profit</div><div class="val">$177k · 2%</div></div>
         </div>
-        <p class="small" style="margin-top:1em">Revenue mix: accommodations &amp; travel $4.05M · ticketing $2.27M · F&amp;B $990k · partnerships $500k. Scenarios: 4,000 tickets → −$808k (−16%) · 6,000 → $177k (2%) · 8,000 → $1.16M (11%). The urban model deletes the campsite city, shuttle fleet and most of the generator load that a remote build carries.</p>
+        <p class="small" style="margin-top:1em">Year one is deliberately an investment year that buys the franchise: margin compounds to 14% by 2028 and 20% by 2029 (next page). Read this base case as a starting point, not a ceiling.</p>
+        <p class="small" style="margin-top:.6em">Revenue mix: accommodations &amp; travel $4.05M · ticketing $2.27M · F&amp;B $990k · partnerships $500k. Scenarios: 4,000 tickets → −$808k (−16%) · 6,000 → $177k (2%) · 8,000 → $1.16M (11%). The urban model deletes the campsite city, shuttle fleet and most of the generator load that a remote build carries.</p>
       </div>
       <div class="accent"><img src="assets/photo2.jpg" alt=""/></div>
     </div></div>
@@ -602,7 +604,7 @@
         <div class="row"><div class="a">Full lineup</div><div class="arrow">·</div><div class="b">22 Jan 2027</div></div>
         <div class="row"><div class="a">Show days</div><div class="arrow">·</div><div class="b">9–11 Jul 2027</div></div>
       </div>
-      <p class="small" style="margin-top:.9em">Attach rates from the model: 20% take travel &amp; hotel packages (1,200 guests) · 5% tours · 50% side events at $100 average.</p>
+      <p class="small" style="margin-top:.9em">Modeled assumptions, not yet benchmarked against actuals: 20% take travel &amp; hotel packages (1,200 guests) · 5% tours · 50% side events at $100 average.</p>
     </div>
     <div class="sfoot"><span>Midnight Sun · Iceland</span><span>14</span></div>
   </section>
@@ -627,7 +629,7 @@
     <div class="pad">
       <div class="eyebrow" style="color:#fff">The Ask</div>
       <div class="askbig" style="color:#fff;letter-spacing:.06em">$1M</div>
-      <p style="margin-top:1.1em;color:rgba(255,255,255,.96);max-width:48ch">We are raising <strong style="font-weight:500;color:#fff">$1M to support the production of Midnight Sun</strong>: talent deposits, production deposits and early marketing ahead of ticket revenue landing at the July 2027 event.</p>
+      <p style="margin-top:1.1em;color:rgba(255,255,255,.96);max-width:48ch">Blind on-sale is 18 September 2026. We need this in place before then: <strong style="font-weight:500;color:#fff">$1M to support the production of Midnight Sun</strong>, talent deposits, production deposits and early marketing ahead of ticket revenue landing at the July 2027 event.</p>
       <p class="small" style="margin-top:.8em;color:rgba(255,255,255,.85)">Structure and terms with the founding team.</p>
     </div>
     <div class="sfoot" style="color:rgba(255,255,255,.75)"><span>Midnight Sun · Iceland</span><span>16</span></div>
