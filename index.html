@@ -137,9 +137,9 @@
     font-size:clamp(.95rem,1.8vw,1.6rem);line-height:1.35;color:var(--navy)}
   .quote-src{margin-top:.5em;font-size:clamp(.52rem,.82vw,.72rem);letter-spacing:.22em;text-transform:uppercase;color:var(--rose)}
   /* ask */
-  .askslide{background:url('assets/brand-bg.png') center/cover}
-  .askslide .pad{z-index:2;text-shadow:0 1px 22px rgba(44,55,99,.45)}
-  .askbig{font-family:var(--serif);font-weight:300;font-size:clamp(3rem,9.5vw,8rem);line-height:1;color:var(--navy)}
+  .askslide{background:var(--navy)}
+  .askslide .pad{z-index:2;text-shadow:0 1px 22px rgba(0,0,0,.5)}
+  .askbig{font-family:var(--serif);font-weight:300;font-size:clamp(3rem,9.5vw,8rem);line-height:1;color:#fff}
   .gslide{background:var(--polar)}
   .gslide::before{content:'';position:absolute;inset:0;background:url('assets/brand-bg.png') center/cover;opacity:.28}
   .gslide .pad{z-index:2}
@@ -625,7 +625,9 @@
   </section>
 
   <!-- 16 · THE ASK · exact, from the budget's funding plan -->
-  <section class="slide askslide">
+  <section class="slide askslide onphoto">
+    <div class="coverbg"><img src="assets/ask-bg.jpg" alt=""/></div>
+    <div class="textscrim"></div>
     <div class="pad">
       <div class="eyebrow" style="color:#fff">The Ask</div>
       <div class="askbig" style="color:#fff;letter-spacing:.06em">$1M</div>
