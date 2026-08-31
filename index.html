@@ -169,6 +169,8 @@
     #frame{padding:1.4vh 3vw}
     #stage{aspect-ratio:auto;width:100%;height:calc(100vh - 2.8vh - 30px);height:calc(100dvh - 2.8vh - 30px)}
     .pad{overflow-y:auto;justify-content:flex-start;padding:8% 6.5%;-webkit-overflow-scrolling:touch}
+    /* portrait: text runs full-width from the top, so darken top-to-bottom instead of left-to-right */
+    .textscrim{background:linear-gradient(180deg,rgba(24,30,58,.86) 0%,rgba(24,30,58,.64) 42%,rgba(24,30,58,.30) 72%,rgba(24,30,58,.12) 100%)}
     .split{display:flex;flex-direction:column;gap:1.1rem;height:auto}
     .accent{display:block;order:-1;flex:none;width:100%;height:34vw;min-height:150px;max-height:240px}
     .coverwrap{padding:10% 7%}
@@ -416,9 +418,9 @@
     <div class="pad" style="z-index:2;text-shadow:0 1px 22px rgba(44,55,99,.5)">
       <div class="eyebrow" style="color:#fff">The Creative Spine</div>
       <h2 style="color:#fff">A festival with <em style="color:var(--pearl)">no night.</em></h2>
-      <p style="color:rgba(255,255,255,.96);max-width:58ch">On 9–11 July the sun rises ~03:25 and sets ~23:35, roughly <strong style="color:#fff;font-weight:500">20 hours of daylight</strong>. At solar midnight the sun sits only 3.5° below the horizon: no astronomical night, no nautical night. The darkest moment of the weekend is civil twilight.</p>
-      <p style="margin-top:1em;color:rgba(255,255,255,.96);max-width:58ch">The sun holds the golden-hour band from <strong style="color:#fff;font-weight:500">~21:55 straight through to ~05:10, seven hours of low, raking light.</strong> The most valuable production asset the event owns, and it is free.</p>
-      <p class="small" style="margin-top:1.1em;color:rgba(255,255,255,.85);max-width:58ch">Nothing in the standard festival playbook works: no lasers, no darkness reveal, no headliner-under-the-stars. Every convention gets rebuilt, which is exactly why it will look like nothing else on the circuit.</p>
+      <p style="color:rgba(255,255,255,.96);max-width:min(58ch,100%)">On 9–11 July the sun rises ~03:25 and sets ~23:35, roughly <strong style="color:#fff;font-weight:500">20 hours of daylight</strong>. At solar midnight the sun sits only 3.5° below the horizon: no astronomical night, no nautical night. The darkest moment of the weekend is civil twilight.</p>
+      <p style="margin-top:1em;color:rgba(255,255,255,.96);max-width:min(58ch,100%)">The sun holds the golden-hour band from <strong style="color:#fff;font-weight:500">~21:55 straight through to ~05:10, seven hours of low, raking light.</strong> The most valuable production asset the event owns, and it is free.</p>
+      <p class="small" style="margin-top:1.1em;color:rgba(255,255,255,.85);max-width:min(58ch,100%)">Nothing in the standard festival playbook works: no lasers, no darkness reveal, no headliner-under-the-stars. Every convention gets rebuilt, which is exactly why it will look like nothing else on the circuit.</p>
     </div>
     <div class="sfoot"><span>Midnight Sun · Iceland</span><span>05</span></div>
   </section>
@@ -631,7 +633,7 @@
     <div class="pad">
       <div class="eyebrow" style="color:#fff">The Ask</div>
       <div class="askbig" style="color:#fff;letter-spacing:.06em">$1M</div>
-      <p style="margin-top:1.1em;color:rgba(255,255,255,.96);max-width:48ch">Blind on-sale is 18 September 2026. We need this in place before then: <strong style="font-weight:500;color:#fff">$1M to support the production of Midnight Sun</strong>, talent deposits, production deposits and early marketing ahead of ticket revenue landing at the July 2027 event.</p>
+      <p style="margin-top:1.1em;color:rgba(255,255,255,.96);max-width:min(48ch,100%)">Blind on-sale is 18 September 2026. We need this in place before then: <strong style="font-weight:500;color:#fff">$1M to support the production of Midnight Sun</strong>, talent deposits, production deposits and early marketing ahead of ticket revenue landing at the July 2027 event.</p>
       <p class="small" style="margin-top:.8em;color:rgba(255,255,255,.85)">Structure and terms with the founding team.</p>
     </div>
     <div class="sfoot" style="color:rgba(255,255,255,.75)"><span>Midnight Sun · Iceland</span><span>16</span></div>
