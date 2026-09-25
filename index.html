@@ -249,6 +249,7 @@
   #gate button:disabled{opacity:.6;cursor:default;transform:none}
   #gate .gerr{min-height:1.2em;margin-top:.2em;font-size:.82rem;color:#FFD9D2;opacity:0;transition:opacity .2s}
   #gate .gerr.show{opacity:1}
+  #gate .gerr.info{color:#BFF0DA}
   #gate .gfine{margin-top:1.3em;font-size:.68rem;letter-spacing:.04em;color:rgba(255,255,255,.55);line-height:1.5}
   body.gated{overflow:hidden}
 </style>
@@ -295,10 +296,12 @@
   var nameEl = document.getElementById('gName');
   var btn = document.getElementById('gBtn');
   var err = document.getElementById('gErr');
+  var BTN_LABEL = btn.textContent;
   setTimeout(function(){ emailEl.focus(); }, 400);
 
-  function showErr(msg){ err.textContent = msg; err.classList.add('show'); }
-  function clearErr(){ err.classList.remove('show'); }
+  function showMsg(msg, isError){ err.textContent = msg; err.classList.toggle('info', !isError); err.classList.add('show'); }
+  function clearErr(){ err.classList.remove('show'); err.classList.remove('info'); }
+  function resetBtn(label){ btn.disabled = false; btn.textContent = label || BTN_LABEL; }
 
   function unlock(){
     try { localStorage.setItem(SEEN, '1'); } catch(e){}
@@ -308,33 +311,43 @@
     setTimeout(function(){ if (gate.parentNode) gate.parentNode.removeChild(gate); }, 520);
   }
 
+  // pending-approval workflow (same status model as report.icelandeclipse.com's access_requests)
+  // against the isolated midnight_sun_deck_leads table via the deck_gate_request() Postgres
+  // function. The table itself has zero client policies — a visitor can only ever read/write
+  // through that function, never directly, so a visitor can't self-approve.
   form.addEventListener('submit', function(ev){
     ev.preventDefault();
     clearErr();
     var email = (emailEl.value || '').trim();
     var name = (nameEl.value || '').trim();
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showErr('Please enter a valid email address.'); emailEl.focus(); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showMsg('Please enter a valid email address.', true); emailEl.focus(); return; }
 
     btn.disabled = true;
-    btn.textContent = 'Opening…';
+    btn.textContent = 'Checking…';
 
-    var payload = { email: email, name: name || null, source: 'deck-gate', referrer: document.referrer || null, user_agent: navigator.userAgent };
-
-    fetch(SUPA_URL + "/rest/v1/midnight_sun_deck_leads", {
+    fetch(SUPA_URL + "/rest/v1/rpc/deck_gate_request", {
       method: "POST",
       headers: {
         "apikey": SUPA_KEY,
         "Authorization": "Bearer " + SUPA_KEY,
-        "Content-Type": "application/json",
-        "Prefer": "return=minimal"
+        "Content-Type": "application/json"
       },
-      body: JSON.stringify(payload)
+      body: JSON.stringify({ p_deck: 'midnight_sun', p_email: email, p_name: name || null, p_referrer: document.referrer || null, p_user_agent: navigator.userAgent })
     }).then(function(res){
-      // 2xx = saved; 409 (dup) also counts as success. Anything else: let them in anyway, don't trap a real viewer.
-      unlock();
+      if (!res.ok) throw new Error('http ' + res.status);
+      return res.json();
+    }).then(function(status){
+      if (status === 'approved') { unlock(); return; }
+      if (status === 'pending') {
+        showMsg("Thanks — your request has been sent for approval. You'll get access once it's approved.", false);
+        resetBtn('Check again');
+        return;
+      }
+      showMsg('That request was not approved.', true);
+      resetBtn();
     }).catch(function(){
-      // Network failure shouldn't block access to the deck.
-      unlock();
+      showMsg('Something went wrong checking access. Please try again in a moment.', true);
+      resetBtn();
     });
   });
 })();
