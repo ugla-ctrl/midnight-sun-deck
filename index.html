@@ -282,10 +282,52 @@
   var SUPA_URL = "https://qmxhsendoepqeyeolzil.supabase.co";
   var SUPA_KEY = "sb_publishable_qU4HH0buJWQW3_RJk3QlYg_5r84ZfdP";
   var SEEN = "msdeck_access";
+  var EMAIL_KEY = "msdeck_email";
   var gate = document.getElementById('gate');
 
+  // View-duration tracking: active-tab time per session, upserted into
+  // midnight_sun_deck_views (separate table from the lead-capture gate
+  // below, so it never touches the leads data). Email is attached when
+  // known -- just submitted, or remembered from a prior visit -- otherwise
+  // the session is tracked anonymously. Uses fetch(keepalive) rather than
+  // sendBeacon on unload because Supabase's REST API needs the
+  // apikey/Authorization headers, which sendBeacon can't send.
+  function trackViews(email){
+    try{
+      var SID = (crypto.randomUUID ? crypto.randomUUID() : (Date.now()+'-'+Math.random().toString(16).slice(2)));
+      var activeMs = 0, lastTick = (document.visibilityState === 'visible' ? Date.now() : null), lastSent = -1;
+      function tick(){ if (lastTick !== null) { activeMs += Date.now() - lastTick; lastTick = Date.now(); } }
+      document.addEventListener('visibilitychange', function(){ tick(); lastTick = document.visibilityState === 'visible' ? Date.now() : null; });
+      function send(keepalive){
+        tick();
+        var seconds = Math.round(activeMs / 1000);
+        if (seconds < 3 || seconds === lastSent) return;
+        lastSent = seconds;
+        fetch(SUPA_URL + "/rest/v1/midnight_sun_deck_views", {
+          method: "POST", keepalive: !!keepalive,
+          headers: {
+            "apikey": SUPA_KEY,
+            "Authorization": "Bearer " + SUPA_KEY,
+            "Content-Type": "application/json",
+            "Prefer": "resolution=merge-duplicates,return=minimal"
+          },
+          body: JSON.stringify({ session_id: SID, email: email || null, seconds: seconds, updated_at: new Date().toISOString() })
+        }).catch(function(){});
+      }
+      setInterval(function(){ send(false); }, 20000);
+      addEventListener('pagehide', function(){ send(true); });
+    }catch(e){}
+  }
+
   // Returning visitor who already unlocked: skip the gate entirely.
-  try { if (localStorage.getItem(SEEN)) { gate.parentNode.removeChild(gate); return; } } catch(e){}
+  try {
+    if (localStorage.getItem(SEEN)) {
+      gate.parentNode.removeChild(gate);
+      var saved = null; try { saved = localStorage.getItem(EMAIL_KEY); } catch(e){}
+      trackViews(saved);
+      return;
+    }
+  } catch(e){}
 
   gate.hidden = false;
   document.body.classList.add('gated');
@@ -300,12 +342,13 @@
   function showErr(msg){ err.textContent = msg; err.classList.add('show'); }
   function clearErr(){ err.classList.remove('show'); }
 
-  function unlock(){
-    try { localStorage.setItem(SEEN, '1'); } catch(e){}
+  function unlock(viewerEmail){
+    try { localStorage.setItem(SEEN, '1'); if (viewerEmail) localStorage.setItem(EMAIL_KEY, viewerEmail); } catch(e){}
     document.body.classList.remove('gated');
     gate.style.transition = 'opacity .5s ease';
     gate.style.opacity = '0';
     setTimeout(function(){ if (gate.parentNode) gate.parentNode.removeChild(gate); }, 520);
+    trackViews(viewerEmail);
   }
 
   form.addEventListener('submit', function(ev){
@@ -331,10 +374,10 @@
       body: JSON.stringify(payload)
     }).then(function(res){
       // 2xx = saved; 409 (dup) also counts as success. Anything else: let them in anyway, don't trap a real viewer.
-      unlock();
+      unlock(email);
     }).catch(function(){
       // Network failure shouldn't block access to the deck.
-      unlock();
+      unlock(email);
     });
   });
 })();
