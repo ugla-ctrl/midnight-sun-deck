@@ -299,7 +299,7 @@
     try{
       var SID = (crypto.randomUUID ? crypto.randomUUID() : (Date.now()+'-'+Math.random().toString(16).slice(2)));
       var activeMs = 0, lastTick = (document.visibilityState === 'visible' ? Date.now() : null), lastSent = -1;
-      function tick(){ if (lastTick !== null) { activeMs += Date.now() - lastTick; lastTick = Date.now(); } }
+      function tick(){ if (lastTick !== null) { activeMs += Math.min(Date.now() - lastTick, 60000); lastTick = Date.now(); } }
       document.addEventListener('visibilitychange', function(){ tick(); lastTick = document.visibilityState === 'visible' ? Date.now() : null; if (document.visibilityState === 'hidden') send(true); });
       function send(keepalive){
         tick();
