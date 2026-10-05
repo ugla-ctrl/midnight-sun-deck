@@ -322,13 +322,12 @@
   }
 
   // Returning visitor who already unlocked: skip the gate entirely.
+  var returning = false;
   try {
-    if (localStorage.getItem(SEEN)) {
-      gate.parentNode.removeChild(gate);
-      var saved = null; try { saved = localStorage.getItem(EMAIL_KEY); } catch(e){}
-      trackViews(saved);
-      return;
-    }
+    var seenFlag = localStorage.getItem(SEEN), savedEmail = localStorage.getItem(EMAIL_KEY);
+    if (seenFlag && savedEmail) { gate.parentNode.removeChild(gate); trackViews(savedEmail); return; }
+    /* unlocked before emails were saved: ask once, so every recorded view has an email address */
+    returning = !!seenFlag && !savedEmail;
   } catch(e){}
 
   gate.hidden = false;
@@ -340,6 +339,7 @@
   var btn = document.getElementById('gBtn');
   var err = document.getElementById('gErr');
   setTimeout(function(){ emailEl.focus(); }, 400);
+  if (returning) { var sub = gate.querySelector('.gsub'); if (sub) sub.textContent = 'Welcome back. Please confirm your email to continue.'; nameEl.style.display = 'none'; btn.textContent = 'Continue'; }
 
   function showErr(msg){ err.textContent = msg; err.classList.add('show'); }
   function clearErr(){ err.classList.remove('show'); }
@@ -362,6 +362,7 @@
 
     btn.disabled = true;
     btn.textContent = 'Opening…';
+    if (returning) { unlock(email); return; }
 
     var payload = { email: email, name: name || null, source: 'deck-gate', referrer: document.referrer || null, user_agent: navigator.userAgent };
 
