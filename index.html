@@ -242,7 +242,7 @@
     outline:none;transition:border-color .2s,background .2s}
   #gate input::placeholder{color:rgba(255,255,255,.6)}
   #gate input:focus{border-color:rgba(255,255,255,.7);background:rgba(255,255,255,.16)}
-  #gate button{width:100%;padding:.95em 1.1em;border-radius:10px;border:none;cursor:pointer;
+  #gate button{width:100%;padding:.95em 1.1em;min-height:44px;border-radius:10px;border:none;cursor:pointer;
     background:var(--rose);color:var(--navy);font-family:var(--sans);font-weight:600;font-size:1rem;
     letter-spacing:.04em;transition:transform .15s,opacity .2s}
   #gate button:hover{transform:translateY(-1px)}
@@ -344,7 +344,9 @@
   function showErr(msg){ err.textContent = msg; err.classList.add('show'); }
   function clearErr(){ err.classList.remove('show'); }
 
+  var opened = false;
   function unlock(viewerEmail){
+    if (opened) return; opened = true;
     try { localStorage.setItem(SEEN, '1'); if (viewerEmail) localStorage.setItem(EMAIL_KEY, viewerEmail); } catch(e){}
     document.body.classList.remove('gated');
     gate.style.transition = 'opacity .5s ease';
@@ -363,6 +365,7 @@
     btn.disabled = true;
     btn.textContent = 'Opening…';
     if (returning) { unlock(email); return; }
+    setTimeout(function(){ unlock(email); }, 4000);   // a stalled request must not trap the viewer
 
     var payload = { email: email, name: name || null, source: 'deck-gate', referrer: document.referrer || null, user_agent: navigator.userAgent };
 
@@ -719,6 +722,7 @@
     [...ctr.children].forEach((d,k)=>d.classList.toggle('on',k===i));
   }
   document.addEventListener('keydown',e=>{
+    if(document.body.classList.contains('gated'))return;   // gate open: keys belong to the form
     if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' ')go(i+1);
     if(e.key==='ArrowLeft'||e.key==='PageUp')go(i-1);
     if(e.key==='Home')go(0); if(e.key==='End')go(slides.length-1);
