@@ -66,8 +66,10 @@
   .textscrim{position:absolute;inset:0;z-index:1;background:linear-gradient(100deg,rgba(30,38,72,.72) 0%,rgba(30,38,72,.52) 32%,rgba(30,38,72,.12) 62%,rgba(30,38,72,0) 78%)}
   .coverwrap{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6%}
   .mark{margin-bottom:2.2em;filter:drop-shadow(0 0 14px rgba(255,255,255,.9)) drop-shadow(0 0 34px rgba(255,255,255,.5))}
-  .cover-sub{margin-top:1.8em;font-weight:500;letter-spacing:.24em;text-transform:uppercase;
-    font-size:clamp(.72rem,1.4vw,1.15rem);line-height:1.9;color:#fff}
+  .cover-sub{margin-top:1.8em;letter-spacing:.24em;text-transform:uppercase;color:#fff}
+  .cover-sub-headline{font-weight:600;font-size:clamp(.92rem,1.85vw,1.4rem);line-height:1.55}
+  .cover-sub-details{margin-top:.6em;font-weight:400;font-size:clamp(.62rem,1.15vw,.92rem);line-height:1.9;color:rgba(255,255,255,.85)}
+  .sep{display:inline}
   .cover-tag{margin-top:1.4em;font-family:var(--serif);font-weight:400;font-style:italic;
     font-size:clamp(.85rem,1.6vw,1.35rem);letter-spacing:.08em;color:rgba(255,255,255,.92)}
   .sfoot-brand{display:flex;align-items:center;gap:.6em}
@@ -183,8 +185,10 @@
     .accent{display:block;order:-1;flex:none;width:100%;height:34vw;min-height:150px;max-height:240px}
     .coverwrap{padding:10% 7%}
     h1.word{font-size:clamp(1.7rem,8vw,3.4rem)}
-    .cover-sub{font-size:.8rem}
+    .cover-sub-headline{font-size:1.05rem}
+    .cover-sub-details{font-size:.76rem}
     .cover-tag{font-size:.95rem}
+    .sep{display:none}
     h2{font-size:1.5rem}
     p{font-size:.94rem;max-width:none}
     .lead{font-size:1.2rem;max-width:none}
@@ -412,7 +416,10 @@
         </svg>
       </div>
       <h1 class="word">Midnight Sun</h1>
-      <div class="cover-sub">A Cultural Gathering<br class="mobile-break"/> Under the Midnight Sun<br/>9 – 11 July 2027 · Hljómskálagarðurinn Park · Reykjavík, Iceland</div>
+      <div class="cover-sub">
+        <div class="cover-sub-headline">A Cultural Gathering<br class="mobile-break"/> Under the Midnight Sun</div>
+        <div class="cover-sub-details">9 – 11 July 2027<span class="sep"> · </span><br class="mobile-break"/>Hljómskálagarðurinn Park<span class="sep"> · </span><br class="mobile-break"/>Reykjavík, Iceland</div>
+      </div>
       <div class="cover-tag">Investment Overview</div>
     </div>
     <div class="sfoot"><span>64.1470° N</span><span class="sfoot-brand">Powered by <img src="assets/imxp-logo-white.png" alt="IMXP"/></span><span>21.9426° W</span></div>
