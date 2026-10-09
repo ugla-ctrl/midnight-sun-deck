@@ -153,8 +153,11 @@
   .contact .nm{font-family:var(--serif);font-size:clamp(1rem,1.8vw,1.6rem);color:#fff}
   .contact .rl{font-size:clamp(.55rem,.85vw,.75rem);letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.75);margin:.3em 0 .5em}
   .contact .em{font-size:clamp(.62rem,1vw,.9rem);color:rgba(255,255,255,.92)}
-  .sfoot{position:absolute;left:7%;right:7%;bottom:4.2%;display:flex;justify-content:space-between;z-index:5;
+  .sfoot{position:absolute;left:7%;right:7%;bottom:4.2%;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;column-gap:1em;z-index:5;
     font-size:clamp(.44rem,.7vw,.6rem);letter-spacing:.3em;text-transform:uppercase;color:#9AA0BC;pointer-events:none}
+  .sfoot>span:first-child{text-align:left}
+  .sfoot>span:last-child{text-align:right}
+  .sfoot-brand{justify-self:center}
   .onphoto .sfoot{color:rgba(255,255,255,.7)}
   #ctr{display:none}
   #ctr button{width:6px;height:6px;border-radius:50%;border:none;background:rgba(61,85,168,.25);cursor:pointer;padding:0;transition:.3s}
