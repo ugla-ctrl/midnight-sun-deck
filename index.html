@@ -95,6 +95,9 @@
   .compare{border-top:1px solid rgba(61,85,168,.16);margin-top:.3em}
   .compare .row{display:grid;grid-template-columns:1fr auto 1.15fr;gap:1.1em;align-items:center;
     padding:clamp(.42rem,1vw,.85rem) 0;border-bottom:1px solid rgba(61,85,168,.12)}
+  .compare.tight .row{padding:clamp(.18rem,.5vw,.42rem) 0}
+  .opp2 .pad{padding-top:4.5%;padding-bottom:11%;overflow-y:auto}
+  .opp2 h2{margin-bottom:.35em;font-size:clamp(1.2rem,2.7vw,2.6rem)}
   .compare .a{color:#8A90AE;text-align:right;font-size:clamp(.62rem,1.05vw,.92rem);font-weight:300}
   .compare .arrow{color:var(--rose);font-size:clamp(.75rem,1.2vw,1.05rem)}
   .compare .b{color:var(--navy);font-weight:400;font-size:clamp(.66rem,1.1vw,.98rem)}
@@ -460,12 +463,12 @@
   </section>
 
   <!-- 4 · OPPORTUNITY II · the comparison table from the doc -->
-  <section class="slide">
+  <section class="slide opp2">
     <div class="pad"><div class="split" style="grid-template-columns:1.25fr .75fr;align-items:center">
       <div class="content">
       <div class="eyebrow">The Opportunity</div>
       <h2>Reykjavík removes the constraint<br/>that capped the eclipse.</h2>
-      <div class="compare" style="font-size:.9em">
+      <div class="compare tight" style="font-size:.85em">
         <div class="row"><div class="a">Hellissandur · pop. 360</div><div class="arrow">→</div><div class="b">Reykjavík · pop. ~140,000</div></div>
         <div class="row"><div class="a">Beds within 30 min · effectively none</div><div class="arrow">→</div><div class="b">~5,620 hotel rooms + ~4,185 short-term rentals</div></div>
         <div class="row"><div class="a">~2.5-hour drive from Keflavík</div><div class="arrow">→</div><div class="b">~50 minutes from Keflavík</div></div>
@@ -473,7 +476,7 @@
         <div class="row"><div class="a">Open land, no weather shelter</div><div class="arrow">→</div><div class="b">Indoor venues on every side of the park</div></div>
         <div class="row"><div class="a">Capacity set by accommodation</div><div class="arrow">→</div><div class="b">Capacity set by permit and turf</div></div>
       </div>
-      <p class="small" style="margin-top:.8em">Secret Solstice previously proved the early summer viability of a music festival in Reykjavík.<br/>And now mid-July is genuinely vacant: LungA, the one festival that occupied the slot, ran its final edition in 2024. No domestic clash for Icelandic artists, crew, gear or press.</p>
+      <p class="small" style="margin-top:.5em;font-size:.88em">Secret Solstice previously proved the early summer viability of a music festival in Reykjavík.<br/>And now mid-July is genuinely vacant: LungA, the one festival that occupied the slot, ran its final edition in 2024. No domestic clash for Icelandic artists, crew, gear or press.</p>
       </div>
       <div class="accent" style="aspect-ratio:1/1;min-height:0"><img src="assets/downtown.jpg" alt=""/></div>
     </div></div>
