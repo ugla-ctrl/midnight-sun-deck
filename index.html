@@ -176,13 +176,15 @@
   }
 
   /* ---- mobile & tablet-portrait additions (desktop/landscape untouched) ---- */
-  @media (max-height:520px){
-    .pad{overflow-y:auto;justify-content:flex-start;-webkit-overflow-scrolling:touch}
+  @media (max-height:700px){
+    .pad{overflow-y:auto;justify-content:flex-start;bottom:13%;padding-bottom:2%;-webkit-overflow-scrolling:touch}
+    .opp2 .pad{padding-bottom:2%}
   }
   @media (max-width:1024px) and (orientation:portrait){
     #frame{padding:1.4vh 3vw}
     #stage{aspect-ratio:auto;width:100%;height:calc(100vh - 2.8vh - 30px);height:calc(100dvh - 2.8vh - 30px)}
-    .pad{overflow-y:auto;justify-content:flex-start;padding:8% 6.5%;-webkit-overflow-scrolling:touch}
+    .pad{overflow-y:auto;justify-content:flex-start;padding:8% 6.5% 2%;bottom:13%;-webkit-overflow-scrolling:touch}
+    .opp2 .pad{padding-bottom:2%}
     /* portrait: text runs full-width from the top, so darken top-to-bottom instead of left-to-right */
     .textscrim{background:linear-gradient(180deg,rgba(24,30,58,.86) 0%,rgba(24,30,58,.64) 42%,rgba(24,30,58,.30) 72%,rgba(24,30,58,.12) 100%)}
     .split{display:flex;flex-direction:column;gap:1.1rem;height:auto}
