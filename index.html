@@ -246,6 +246,12 @@
     .sfoot-brand img{height:1em}
   }
 
+  /* phones held sideways: same headline treatment as portrait */
+  @media (max-height:500px) and (orientation:landscape){
+    h2 br:not(.mobile-break),.lead br:not(.mobile-break){display:none}
+    h2,.lead{text-wrap:balance}
+  }
+
   /* ---- email gate ---- */
   #gate{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;
     padding:6vw;background:var(--navy)}
@@ -547,7 +553,7 @@
   <section class="slide">
     <div class="pad">
       <div class="eyebrow">Reach · Iceland Eclipse 2026</div>
-      <h2>An estimated 50 million impressions before, during and after the event.</h2>
+      <h2 style="text-wrap:balance">An estimated 50 million impressions before, during and after the event.</h2>
       <div class="tiles" style="margin-top:1.3em">
         <div class="tile"><div class="n">1.5M</div><div class="l">Page views</div></div>
         <div class="tile"><div class="n">750k</div><div class="l">Unique visitors</div></div>
@@ -615,7 +621,7 @@
     <div class="pad">
       <div class="eyebrow">Partnership Tiers</div>
       <h2>Proven skeleton, new urban inventory.</h2>
-      <p class="lead" style="max-width:none;font-size:max(1rem,1.773cqw)">Evidence of a revenue line, not a second ask: $1.65M of sponsorship inventory at full sell-through, priced against a rate card that sold in 2026.</p>
+      <p class="lead" style="max-width:none;font-size:max(1rem,1.773cqw);text-wrap:balance">Evidence of a revenue line, not a second ask: $1.65M of sponsorship inventory at full sell-through, priced against a rate card that sold in 2026.</p>
       <div class="tiers" style="margin-top:1em">
         <div class="tier"><div class="band"></div><div class="t">Solar</div><div class="price">$500k</div><div class="slots">1 partner</div></div>
         <div class="tier"><div class="band"></div><div class="t">Lunar</div><div class="price">$200k</div><div class="slots">2 partners</div></div>
