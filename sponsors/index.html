@@ -169,9 +169,172 @@
     .tiles,.tiles.t3,.pillars,.tiers{grid-template-columns:1fr 1fr}
     .wrap{padding:0 18px}
   }
+  /* ---- email gate ---- */
+  #gate{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;
+    padding:6vw;background:var(--navy)}
+  #gate .gbg{position:absolute;inset:0}
+  #gate .gbg img{width:100%;height:100%;object-fit:cover}
+  #gate .gbg::after{content:'';position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(44,55,99,.62),rgba(44,55,99,.78))}
+  #gate .gcard{position:relative;z-index:2;width:min(440px,100%);text-align:center;color:#fff}
+  #gate .gmark{margin:0 auto 1.9em;filter:drop-shadow(0 0 14px rgba(255,255,255,.85))}
+  #gate h1{font-family:var(--serif);font-weight:300;letter-spacing:.22em;text-transform:uppercase;
+    font-size:clamp(1.7rem,4.6vw,3rem);line-height:1.05;text-indent:.22em;color:#fff}
+  #gate .gsub{margin-top:1.3em;font-weight:300;line-height:1.55;color:rgba(255,255,255,.9);
+    font-size:clamp(.82rem,1.4vw,1rem);max-width:34ch;margin-left:auto;margin-right:auto}
+  #gate form{margin-top:2em;display:flex;flex-direction:column;gap:.75rem}
+  #gate input{width:100%;padding:.95em 1.1em;border-radius:10px;border:1px solid rgba(255,255,255,.28);
+    background:rgba(255,255,255,.1);color:#fff;font-family:var(--sans);font-size:1rem;font-weight:300;
+    outline:none;transition:border-color .2s,background .2s}
+  #gate input::placeholder{color:rgba(255,255,255,.6)}
+  #gate input:focus{border-color:rgba(255,255,255,.7);background:rgba(255,255,255,.16)}
+  #gate button{width:100%;padding:.95em 1.1em;min-height:44px;border-radius:10px;border:none;cursor:pointer;
+    background:var(--rose);color:var(--navy);font-family:var(--sans);font-weight:600;font-size:1rem;
+    letter-spacing:.04em;transition:transform .15s,opacity .2s}
+  #gate button:hover{transform:translateY(-1px)}
+  #gate button:disabled{opacity:.6;cursor:default;transform:none}
+  #gate .gerr{min-height:1.2em;margin-top:.2em;font-size:.82rem;color:#FFD9D2;opacity:0;transition:opacity .2s}
+  #gate .gerr.show{opacity:1}
+  #gate .gfine{margin-top:1.3em;font-size:.68rem;letter-spacing:.04em;color:rgba(255,255,255,.55);line-height:1.5}
+  body.gated{overflow:hidden}
 </style>
 </head>
 <body>
+
+<!-- EMAIL GATE -->
+<section id="gate" hidden>
+  <div class="gbg"><img src="../assets/lake.png" alt=""/></div>
+  <div class="gcard">
+    <div class="gmark">
+      <svg width="46" height="52" viewBox="0 0 66 74" fill="none">
+        <circle cx="33" cy="30" r="22" stroke="#fff" stroke-width="1.2"/>
+        <circle cx="33" cy="62" r="2.4" fill="#fff"/>
+      </svg>
+    </div>
+    <h1>Midnight Sun</h1>
+    <div class="gsub">Enter your details to view our partnership opportunities.</div>
+    <form id="gateForm" novalidate>
+      <input id="gName" type="text" name="name" placeholder="Full name" autocomplete="name" />
+      <input id="gEmail" type="email" name="email" placeholder="Email address" autocomplete="email" required />
+      <button id="gBtn" type="submit">View the opportunities</button>
+      <div class="gerr" id="gErr"></div>
+    </form>
+    <div class="gfine">Confidential. Not for further distribution.</div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var SUPA_URL = "https://qmxhsendoepqeyeolzil.supabase.co";
+  var SUPA_KEY = "sb_publishable_qU4HH0buJWQW3_RJk3QlYg_5r84ZfdP";
+  var SEEN = "mssponsors_access";
+  var EMAIL_KEY = "mssponsors_email";
+  var gate = document.getElementById('gate');
+
+  // View-duration tracking: active-tab time per session, upserted into
+  // midnight_sun_sponsors_views (separate table from the lead-capture gate
+  // below, so it never touches the leads data). Writes go through the
+  // deck_view_beat() database function (a direct table upsert is not
+  // allowed for anon -- its update half was silently rejected). Email is
+  // attached when known -- just submitted, or remembered from a prior
+  // visit -- otherwise the session is tracked anonymously. Uses
+  // fetch(keepalive) rather than sendBeacon on unload because Supabase's
+  // REST API needs the apikey/Authorization headers, which sendBeacon
+  // can't send.
+  function trackViews(email){
+    try{
+      var SID = (crypto.randomUUID ? crypto.randomUUID() : (Date.now()+'-'+Math.random().toString(16).slice(2)));
+      var activeMs = 0, lastTick = (document.visibilityState === 'visible' ? Date.now() : null), lastSent = -1;
+      function tick(){ if (lastTick !== null) { activeMs += Math.min(Date.now() - lastTick, 60000); lastTick = Date.now(); } }
+      document.addEventListener('visibilitychange', function(){ tick(); lastTick = document.visibilityState === 'visible' ? Date.now() : null; if (document.visibilityState === 'hidden') send(true); });
+      function send(keepalive){
+        tick();
+        var seconds = Math.round(activeMs / 1000);
+        if (seconds < 3 || seconds === lastSent) return;
+        lastSent = seconds;
+        fetch(SUPA_URL + "/rest/v1/rpc/deck_view_beat", {
+          method: "POST", keepalive: !!keepalive,
+          headers: {
+            "apikey": SUPA_KEY,
+            "Authorization": "Bearer " + SUPA_KEY,
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ p_deck: "midnight_sun_sponsors", p_session_id: SID, p_email: email || null, p_seconds: seconds })
+        }).catch(function(){});
+      }
+      setInterval(function(){ send(false); }, 20000);
+      addEventListener('pagehide', function(){ send(true); });
+    }catch(e){}
+  }
+
+  // Returning visitor who already unlocked: skip the gate entirely.
+  var returning = false;
+  try {
+    var seenFlag = localStorage.getItem(SEEN), savedEmail = localStorage.getItem(EMAIL_KEY);
+    if (seenFlag && savedEmail) { gate.parentNode.removeChild(gate); trackViews(savedEmail); return; }
+    /* unlocked before emails were saved: ask once, so every recorded view has an email address */
+    returning = !!seenFlag && !savedEmail;
+  } catch(e){}
+
+  gate.hidden = false;
+  document.body.classList.add('gated');
+
+  var form = document.getElementById('gateForm');
+  var emailEl = document.getElementById('gEmail');
+  var nameEl = document.getElementById('gName');
+  var btn = document.getElementById('gBtn');
+  var err = document.getElementById('gErr');
+  setTimeout(function(){ emailEl.focus(); }, 400);
+  if (returning) { var sub = gate.querySelector('.gsub'); if (sub) sub.textContent = 'Welcome back. Please confirm your email to continue.'; nameEl.style.display = 'none'; btn.textContent = 'Continue'; }
+
+  function showErr(msg){ err.textContent = msg; err.classList.add('show'); }
+  function clearErr(){ err.classList.remove('show'); }
+
+  var opened = false;
+  function unlock(viewerEmail){
+    if (opened) return; opened = true;
+    try { localStorage.setItem(SEEN, '1'); if (viewerEmail) localStorage.setItem(EMAIL_KEY, viewerEmail); } catch(e){}
+    document.body.classList.remove('gated');
+    gate.style.transition = 'opacity .5s ease';
+    gate.style.opacity = '0';
+    setTimeout(function(){ if (gate.parentNode) gate.parentNode.removeChild(gate); }, 520);
+    trackViews(viewerEmail);
+  }
+
+  form.addEventListener('submit', function(ev){
+    ev.preventDefault();
+    clearErr();
+    var email = (emailEl.value || '').trim();
+    var name = (nameEl.value || '').trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showErr('Please enter a valid email address.'); emailEl.focus(); return; }
+
+    btn.disabled = true;
+    btn.textContent = 'Opening…';
+    if (returning) { unlock(email); return; }
+    setTimeout(function(){ unlock(email); }, 4000);   // a stalled request must not trap the viewer
+
+    var payload = { email: email, name: name || null, source: 'sponsors-deck-gate', referrer: document.referrer || null, user_agent: navigator.userAgent };
+
+    fetch(SUPA_URL + "/rest/v1/midnight_sun_deck_leads", {
+      method: "POST",
+      headers: {
+        "apikey": SUPA_KEY,
+        "Authorization": "Bearer " + SUPA_KEY,
+        "Content-Type": "application/json",
+        "Prefer": "return=minimal"
+      },
+      body: JSON.stringify(payload)
+    }).then(function(res){
+      // 2xx = saved; 409 (dup) also counts as success. Anything else: let them in anyway, don't trap a real viewer.
+      unlock(email);
+    }).catch(function(){
+      // Network failure shouldn't block access to the deck.
+      unlock(email);
+    });
+  });
+})();
+</script>
+
 
 <!-- COVER -->
 <section class="cover">
